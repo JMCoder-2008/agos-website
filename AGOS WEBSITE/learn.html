@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn | AGOS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/learn.css">
+</head>
+<body>
+
+  <!-- NAVBAR: pareho sa lahat ng page (galing sa wireframe ng designers) -->
+  <header>
+    <nav>
+      <!-- TODO: palitan ng <img> ng logo kapag na-export na ng designers -->
+      <a href="index.html" class="logo"><img src="images/logo.png" alt="AGOS - Awareness and Guidance for Our Sustainability"></a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="interactive.html">Interactive</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- 1. CONSERVATION: Save Water, Save Life -->
+    <section id="conservation">
+      <h1>Save Water, Save Life</h1>
+      <p>Small actions today can protect our future. Simple choices make a lasting impact.</p>
+      <div class="tips">
+        <article class="tip">
+          <!-- TODO: ilagay ang icon sa images/conservation/turn-off-tap.png -->
+          <img src="images/conservation/turn-off-tap.png" alt="Turn off the tap">
+          <h3>Turn off the tap</h3>
+          <p>Shut off the tap when not in use to save clean water.</p>
+        </article>
+        <article class="tip">
+          <!-- TODO: ilagay ang icon sa images/conservation/fix-leaks.png -->
+          <img src="images/conservation/fix-leaks.png" alt="Fix leaks">
+          <h3>Fix leaks</h3>
+          <p>Repair leaks quickly to prevent water waste at home.</p>
+        </article>
+        <article class="tip">
+          <!-- TODO: ilagay ang icon sa images/conservation/reuse-water.png -->
+          <img src="images/conservation/reuse-water.png" alt="Reuse water">
+          <h3>Reuse water</h3>
+          <p>Collect and reuse water for cleaning and gardening.</p>
+        </article>
+        <article class="tip">
+          <!-- TODO: ilagay ang icon sa images/conservation/eco-products.png -->
+          <img src="images/conservation/eco-products.png" alt="Choose eco-friendly products">
+          <h3>Choose eco-friendly products</h3>
+          <p>Use products that are gentle on water and the environment.</p>
+        </article>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- 2. ENVIRONMENTAL DATA DASHBOARD
+         Ang mga numero ay galing sa js/data.js. Doon mo lang papalitan ang data. -->
+    <section id="data">
+      <h2>Environmental Data Dashboard</h2>
+      <p class="sample-note">Sample data</p>
+
+      <!-- Apat na stat card: ginagawa ng js/learn.js galing sa data.js -->
+      <div id="stat-cards" class="stat-grid"></div>
+
+      <!-- Tatlong chart -->
+      <div class="chart-grid">
+        <article class="chart-card">
+          <h3>El Niño</h3>
+          <p class="sample-tag">(SAMPLE DATA)</p>
+          <div class="chart-box"><canvas id="chart-el-nino"></canvas></div>
+          <p class="chart-source" id="source-el-nino"></p>
+        </article>
+
+        <article class="chart-card">
+          <h3>Pax Silica</h3>
+          <p class="sample-tag">(SAMPLE DATA)</p>
+          <div class="chart-box"><canvas id="chart-pax-silica"></canvas></div>
+          <p class="chart-source" id="source-pax-silica"></p>
+        </article>
+
+        <article class="chart-card">
+          <h3>Water Resources</h3>
+          <p class="sample-tag">(SAMPLE DATA)</p>
+          <div class="chart-box"><canvas id="chart-water"></canvas></div>
+          <p class="chart-source" id="source-water"></p>
+        </article>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- 3. OUR REFERENCES (walang laman pa, hihintayin ang mga source ng group) -->
+    <section id="references">
+      <h2>Our References</h2>
+      <div class="ref-grid">
+        <article class="ref-card">
+          <h3>Trusted Sources</h3>
+          <!-- TODO: ilagay ang mga source dito kapag naibigay na ng group (isang <li> bawat source) -->
+          <ul class="ref-list">
+            <li><a href="https://droughtcaster.pagasa.dost.gov.ph" target="_blank" rel="noopener">DOST-PAGASA, PH Meteorological Drought Monitor 🔗</a></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </article>
+        <article class="ref-card">
+          <h3>Data</h3>
+          <!-- TODO: ilagay ang mga source dito kapag naibigay na ng group (isang <li> bawat source) -->
+          <ul class="ref-list">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </article>
+        <article class="ref-card">
+          <h3>Links</h3>
+          <!-- TODO: ilagay ang mga source dito kapag naibigay na ng group (isang <li> bawat source) -->
+          <ul class="ref-list">
+            <li><a href="https://www.youtube.com/watch?v=NG0kUe-g8hY" target="_blank" rel="noopener">YouTube, Pax Silica: The AI Hub That Could Rewrite the Philippine Economy 🔗</a></li>
+            <li><a href="https://www.youtube.com/watch?v=57S0Rw9L_hw" target="_blank" rel="noopener">YouTube, What is El Niño? 🔗</a></li>
+            <li><a href="https://www.youtube.com/watch?v=j0yjZdCPOSQ" target="_blank" rel="noopener">YouTube, Why Every Drop Counts: Easy Ways to Save Water Today! 🔗</a></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER: pareho sa lahat ng page. Placeholder lang ang email/number/links, papalitan ng totoo -->
+  <footer>
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>agos@email.com</p>
+      <p>+63 912 3456 789</p>
+      <p class="socials">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Telegram</a>
+        <a href="#">X</a>
+      </p>
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2026 AGOS. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <!-- Chart.js (library para sa mga chart), nasa folder natin kaya gumagana kahit walang internet -->
+  <script src="js/vendor/chart.umd.min.js"></script>
+  <!-- data.js = ang mga numero; learn.js = gumagawa ng mga card at chart galing sa data -->
+  <script src="js/data.js"></script>
+  <script src="js/learn.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive | AGOS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/interactive.css">
+</head>
+<body>
+
+  <!-- NAVBAR: pareho sa lahat ng page (galing sa wireframe ng designers) -->
+  <header>
+    <nav>
+      <!-- TODO: palitan ng <img> ng logo kapag na-export na ng designers -->
+      <a href="index.html" class="logo"><img src="images/logo.png" alt="AGOS - Awareness and Guidance for Our Sustainability"></a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="interactive.html">Interactive</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- MAP SECTION: PH Meteorological Drought Monitor ng DOST-PAGASA (naka-embed) + location card -->
+    <section id="map-section">
+      <h1>Explore the Philippines</h1>
+      <p>Select a province on the map to see its drought assessment and outlook.</p>
+
+      <div class="map-layout">
+
+        <!-- Mapa: mga 3/4 ng lapad -->
+        <iframe id="ph-map"
+                src="https://droughtcaster.pagasa.dost.gov.ph"
+                title="PH Meteorological Drought Monitor (DOST-PAGASA)"
+                loading="lazy"></iframe>
+
+        <!-- Location card: mga 1/4 ng lapad. Larawan sa taas, tatlong bahagi ng description sa ilalim (1 -> 2 -> 3) -->
+        <div class="location-card">
+
+          <!-- LARAWAN: ilagay ang file sa images/interactive/location.jpg (o palitan ang pangalan sa src) -->
+          <img class="location-image" src="images/interactive/location.jpg" alt="Magsasaka na nakatingin sa tuyong lupa, larawan ng tagtuyot">
+
+          <div class="location-description">
+
+            <!-- 1. Understanding Drought Conditions -->
+            <section class="loc-block">
+              <h3 class="loc-kicker">Drought Monitoring in the Philippines</h3>
+              <h3>Understanding Drought Conditions</h3>
+              <p>Explore the official PAGASA Drought Caster to identify provinces experiencing drought, dry spells, and dry conditions. The interactive map presents observed drought assessments and available outlook information to help users understand changing rainfall conditions across the Philippines.</p>
+            </section>
+
+            <!-- 2. What You Can Discover + Drought Classification -->
+            <section class="loc-block">
+              <h3>What You Can Discover:</h3>
+              <ul class="loc-list">
+                <li><span class="loc-icon">📍</span> Drought-affected provinces and locations</li>
+                <li><span class="loc-icon">🌤️</span> Observed dry conditions and drought assessments</li>
+                <li><span class="loc-icon">📅</span> Available drought forecasts and outlooks</li>
+                <li><span class="loc-icon">🗂️</span> Different drought classification levels</li>
+                <li><span class="loc-icon">🗺️</span> Province-specific assessment and outlook data</li>
+              </ul>
+
+              <h3>Drought Classification</h3>
+              <p class="loc-note">PAGASA uses the following categories:</p>
+              <ul class="loc-legend">
+                <li><span class="dot dot-green"></span> Not Affected</li>
+                <li><span class="dot dot-yellow"></span> Dry Condition</li>
+                <li><span class="dot dot-orange"></span> Dry Spell</li>
+                <li><span class="dot dot-red"></span> Drought</li>
+                <li><span class="dot dot-gray"></span> No Data</li>
+              </ul>
+            </section>
+
+            <!-- 3. October 2026 Assessment (palitan ang mga numero dito kapag may bagong assessment) -->
+            <section class="loc-block">
+              <span class="loc-badge">October 2026 Assessment</span>
+              <h3>Latest reported drought assessment</h3>
+              <div class="loc-stats">
+                <div class="loc-stat stat-red"><strong>5</strong><span>Drought provinces</span></div>
+                <div class="loc-stat stat-orange"><strong>11</strong><span>Dry spell provinces</span></div>
+                <div class="loc-stat stat-yellow"><strong>10</strong><span>Dry condition provinces</span></div>
+              </div>
+              <p class="loc-note">Source: PAGASA Monthly Agroclimatic Review and Outlook, October 2026 assessment. <a class="loc-tag" href="https://droughtcaster.pagasa.dost.gov.ph/" target="_blank" rel="noopener" title="Open PH Meteorological Drought Monitor (PAGASA)">PAGASA</a></p>
+            </section>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- QUIZ SECTION (Knowledge Check): ginagawa ng js/quiz.js. Ang mga tanong ay nasa taas ng js/quiz.js -->
+    <section id="quiz"></section>
+
+  </main>
+
+  <!-- FOOTER: pareho sa lahat ng page. Placeholder lang ang email/number/links, papalitan ng totoo -->
+  <footer>
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>agos@email.com</p>
+      <p>+63 912 3456 789</p>
+      <p class="socials">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Telegram</a>
+        <a href="#">X</a>
+      </p>
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2026 AGOS. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>
