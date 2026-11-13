@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | AGOS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+  <!-- NAVBAR: pareho sa lahat ng page (galing sa wireframe ng designers) -->
+  <header>
+    <nav>
+      <!-- TODO: palitan ng <img> ng logo kapag na-export na ng designers -->
+      <a href="index.html" class="logo"><img src="images/logo.png" alt="AGOS - Awareness and Guidance for Our Sustainability"></a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="interactive.html">Interactive</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- 1. HERO: Main Heading, Subtitle, at Explore Now button -->
+    <section id="hero">
+      <h1>Every Drop Matters.</h1>
+      <p>Discover water resources, understand environmental challenges, and explore ways to protect our future.</p>
+      <a href="#intro" class="button">Explore Now &rarr;</a>
+    </section>
+
+    <!-- 2. INTRODUCTION + TATLONG TOPIC (video sa taas, card sa baba) -->
+    <section id="intro">
+      <p>Learn about the effects of El Nino and large scale projects such as Pax Silica on our precious water sources. Watch this educational videos to get simple tips to help conserve water in your home. Every drop means to us!</p>
+
+      <div class="topics-grid">
+
+        <article class="topic">
+
+          <!-- VIDEO (YouTube embed). Gamitin ang /embed/ na link, hindi ang watch?v= -->
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/NG0kUe-g8hY"
+                    title="Pax Silica: The AI Hub That Could Rewrite the Philippine Economy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    loading="lazy"
+                    allowfullscreen></iframe>
+          </div>
+
+          <!-- CARD: larawan, pamagat, at description -->
+          <div class="card">
+            <!-- TODO: ilagay ang larawan sa images/learn/pax-silica.jpg -->
+            <img src="images/learn/pax-silica.jpg" alt="Pax Silica">
+            <h3>Pax Silica</h3>
+          <!-- TODO: kumpirmahin ng designers ang description na ito (mali ang nasa PPT para sa Pax Silica) -->
+            <p>An international initiative that promotes cooperation and security in the global supply chain of semiconductors and advanced technology. </p>
+          </div>
+
+        </article>
+
+        <article class="topic">
+
+          <!-- VIDEO (YouTube embed). Gamitin ang /embed/ na link, hindi ang watch?v= -->
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/57S0Rw9L_hw"
+                    title="What is El Niño?"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    loading="lazy"
+                    allowfullscreen></iframe>
+          </div>
+
+          <!-- CARD: larawan, pamagat, at description -->
+          <div class="card">
+            <!-- TODO: ilagay ang larawan sa images/learn/el-nino.jpg -->
+            <img src="images/learn/el-nino.jpg" alt="El Niño">
+            <h3>El Niño</h3>
+            <p>A weather phenomenon that causes unusually hot temperatures and less rainfall, leading to drought and water shortages.
+</p>
+          </div>
+
+        </article>
+
+        <article class="topic">
+
+          <!-- VIDEO (YouTube embed). Gamitin ang /embed/ na link, hindi ang watch?v= -->
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/j0yjZdCPOSQ"
+                    title="Why Every Drop Counts: Easy Ways to Save Water Today!"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    loading="lazy"
+                    allowfullscreen></iframe>
+          </div>
+
+          <!-- CARD: larawan, pamagat, at description -->
+          <div class="card">
+            <!-- TODO: ilagay ang larawan sa images/learn/water-resources.jpg -->
+            <img src="images/learn/water-resources.jpg" alt="Water Resources">
+            <h3>Water Resources</h3>
+            <p>Natural sources of water, such as rivers, lakes, groundwater, and oceans, that people use for drinking, farming, and daily activities.</p>
+          </div>
+
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER: pareho sa lahat ng page. Placeholder lang ang email/number/links, papalitan ng totoo -->
+  <footer>
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>agos@email.com</p>
+      <p>+63 912 3456 789</p>
+      <p class="socials">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Telegram</a>
+        <a href="#">X</a>
+      </p>
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2026 AGOS. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>
