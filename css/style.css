@@ -8,6 +8,13 @@
   --ocean-blue: #2497B8;   /* Buttons, links, icons */
   --deep-navy: #123B5D;    /* Main headings, navigation, footer */
 
+  /* NAVBAR: deep navy na papunta sa mas matingkad na asul sa kanan; ocean blue ang linya sa ilalim at ang active/hover */
+  --nav-bg-start: #123B5D;                    /* kaliwa (Deep Navy) */
+  --nav-bg-end: #17577d;                      /* kanan (bahagyang papunta sa Ocean Blue) */
+  --nav-text: #ffffff;                        /* kulay ng text ng menu */
+  --nav-hover-bg: rgba(255, 255, 255, 0.16);  /* kapag na-hover */
+  --nav-divider: rgba(255, 255, 255, 0.45);   /* patayong linya sa tabi ng logo */
+
   --logo-height: 70px;     /* laki ng logo */
   --nav-gap: 40px;         /* espasyo sa pagitan ng logo at ng menu */
   --nav-link-gap: 8px;     /* espasyo sa pagitan ng mga menu button */
@@ -27,8 +34,9 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: #fff;
-  border-bottom: var(--navbar-line) solid var(--deep-navy);
+  background: var(--deep-navy);   /* kulay habang wala pa ang gradient */
+  background-image: linear-gradient(90deg, var(--nav-bg-start), var(--nav-bg-end));
+  border-bottom: var(--navbar-line) solid var(--ocean-blue);   /* Ocean Blue na linya sa ilalim ng navy */
   transition: transform 0.35s ease;
 }
 
@@ -74,7 +82,7 @@ nav::after {
     calc(40px + var(--logo-height) * 2 + 20px)
   );
   width: var(--divider-line);
-  background: var(--deep-navy);
+  background: var(--nav-divider);
 }
 
 .logo {
@@ -111,20 +119,24 @@ nav ul a:visited {
   display: block;
   padding: 8px 16px;
   border-radius: 10px;
-  color: black;
+  color: var(--nav-text);
   font-weight: 600;
   transition: background-color 0.25s ease;   /* makinis na pagpalit ng kulay */
 }
 
-/* Kapag na-hover ang mouse, at kapag ito ang page na binuksan (active) */
-nav ul a:hover,
-nav ul a.active {
+/* Hover: manipis na puting tint. Active (ang page na binuksan): Ocean Blue, para magkaiba */
+nav ul a:hover {
+  background-color: var(--nav-hover-bg);
+}
+
+nav ul a.active,
+nav ul a.active:hover {
   background-color: var(--ocean-blue);
 }
 
 /* Para sa keyboard (Tab key) */
 nav ul a:focus-visible {
-  outline: 2px solid var(--deep-navy);
+  outline: 2px solid #fff;
   outline-offset: 2px;
 }
 

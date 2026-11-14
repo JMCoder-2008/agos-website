@@ -1,4 +1,4 @@
-// home.js - float-up animation ng 3 video at 3 card sa Home page.
+// home.js - float-up animation ng navy panel, 3 video at 3 card sa Home page.
 // Lumalabas ang bawat isa kapag napasok na sa screen (nag-scroll o pinindot ang Explore Now).
 // Hindi sabay-sabay: bawat column ay 0.15s na huli sa kaliwa, at ang mga card ay 0.3s na huli sa mga video sa taas nila.
 // Para baguhin ang bilis: palitan ang mga numero sa ibaba (seconds). Ang haba ng galaw ay nasa css/home.css (.reveal).
@@ -6,7 +6,9 @@
 (function () {
   const COLUMN_DELAY = 0.15;   // huli ng bawat column (0.15s, 0.30s)
   const CARD_DELAY   = 0.3;    // dagdag na huli ng card kumpara sa video
+  const PANEL_WAIT   = 350;    // ms: lalabas muna ang navy panel, tapos saka magsisimula ang mga video at card
 
+  const panel = document.getElementById("intro");
   const items = document.querySelectorAll(".topics-grid .video-frame, .topics-grid .card");
   if (!items.length || !("IntersectionObserver" in window)) return;   // walang animation, nakikita pa rin lahat
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -18,6 +20,7 @@
   }
 
   items.forEach(function (item) { item.classList.add("reveal"); });
+  if (panel) panel.classList.add("reveal-panel");
 
   const observer = new IntersectionObserver(function (entries) {
     const visible = entries.filter(function (e) { return e.isIntersecting; });
@@ -36,7 +39,20 @@
     });
   }, { threshold: 0.15 });
 
-  items.forEach(function (item) { observer.observe(item); });
+  function startItems() {
+    items.forEach(function (item) { observer.observe(item); });
+  }
+
+  if (!panel) { startItems(); return; }
+
+  // 1. Panel muna: lumulutang kapag nakikita na. 2. Pagkatapos ng PANEL_WAIT ms, ang mga video at card.
+  const panelObserver = new IntersectionObserver(function (entries) {
+    if (!entries.some(function (e) { return e.isIntersecting; })) return;
+    panelObserver.disconnect();
+    panel.classList.add("in");
+    setTimeout(startItems, PANEL_WAIT);
+  }, { threshold: 0.1 });
+  panelObserver.observe(panel);
 })();
 
 // ===== YOUTUBE FACADE =====

@@ -164,7 +164,7 @@ hr {
 body {
   background-color: #43aabc;   /* kulay habang naglo-load ang mga larawan */
   background-image:
-    url("../images/learn-leaf.webp"),
+    url("../images/learn-leaf-only.webp"),
     url("../images/learn-wave.webp"),
     url("../images/learn-bg.jpg");
   background-repeat: no-repeat, no-repeat, no-repeat;
@@ -200,8 +200,12 @@ body {
   text-shadow: 0 2px 8px rgba(18, 59, 93, 0.3);
 }
 
-/* Ibang heading at text na direktang nasa teal: Deep Navy (mas malinaw sa kulay na ito) */
-main > section > h2,
+/* Mga section heading: puti, gaya ng Save Water, Save Life */
+main > section > h2 {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(18, 59, 93, 0.3);   /* para mas malinaw ang puti sa teal */
+}
+
 .sample-note {
   color: var(--deep-navy);
 }
@@ -275,5 +279,75 @@ footer {
   :root {
     --leaf-width: 24vw;
     --tips-width: 100%;
+  }
+}
+
+
+/* =====================================================================
+   NAVY PANELS: Save Water Save Life, Environmental Data Dashboard, at Our References
+   Parehong kulay ng navbar (Deep Navy papunta sa mas matingkad na asul), puti ang text.
+   Nasa dulo ng file ito para ito ang masunod sa mga naunang rule.
+   ===================================================================== */
+
+#conservation,
+#data,
+#references {
+  padding: 30px;
+  border-radius: 24px;
+  background-color: var(--deep-navy);
+  background-image: linear-gradient(90deg, var(--nav-bg-start, #123B5D), var(--nav-bg-end, #17577d));
+  box-shadow: 0 6px 18px rgba(18, 59, 93, 0.25);
+  color: #fff;
+}
+
+/* Ang panel ng Save Water ay kasing-lapad ng dating apat na card, para makita pa rin ang dahon sa kanan */
+#conservation {
+  width: var(--tips-width);
+  box-sizing: border-box;
+}
+
+#conservation .tips {
+  width: 100%;
+}
+
+/* Hindi na kailangan ang mga linya (hr) kasi may espasyo na sa pagitan ng mga panel */
+hr {
+  display: none;
+}
+
+#data,
+#references {
+  margin-top: 40px;
+}
+
+/* Sa loob ng navy panel */
+#data .sample-note {
+  color: #fff;
+  opacity: 0.85;
+}
+
+/* Stat card: manipis na puting tint (glass), kasi hindi na makikita ang navy card sa navy panel */
+#data .stat-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+/* Ang mga card sa loob ay maliwanag, kaya navy ang text nila (hindi puti na galing sa panel) */
+#conservation .tip,
+#data .chart-card,
+#references .ref-card {
+  color: var(--deep-navy);
+}
+
+/* Pamagat ng tip card: bahagyang mas madilim na Ocean Blue para mabasa sa kulay-abong asul */
+#conservation .tip h3 {
+  color: #1b7f9c;
+}
+
+@media (max-width: 900px) {
+  #conservation,
+  #data,
+  #references {
+    padding: 20px;
   }
 }

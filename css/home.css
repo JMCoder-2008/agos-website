@@ -109,15 +109,23 @@ html {
   }
 }
 
-/* INTRO: heading at paragraph sa taas ng tatlong video (navy) */
+/* INTRO: navy panel (kulay ng navbar) na may puting heading at paragraph sa taas ng tatlong video */
+#intro {
+  padding: 30px;
+  border-radius: 24px;
+  background-color: var(--deep-navy);
+  background-image: linear-gradient(90deg, var(--nav-bg-start, #123B5D), var(--nav-bg-end, #17577d));
+  box-shadow: 0 6px 18px rgba(18, 59, 93, 0.25);
+}
+
 #intro h2 {
   margin: 0 0 12px;
-  color: var(--deep-navy);
+  color: #fff;
 }
 
 #intro > p {
   margin: 0 0 24px;
-  color: var(--deep-navy);
+  color: #fff;
 }
 
 /* 2. TATLONG TOPIC: tatlong column. Gamit ang subgrid para pantay ang video, source, at card sa lahat ng column */
@@ -275,5 +283,35 @@ html {
   .yt-facade img,
   .yt-play {
     transition: none;
+  }
+}
+
+/* PANEL ANIMATION: lumulutang ang navy panel muna, tapos ang mga video at card sa loob (js/home.js) */
+.reveal-panel {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-panel.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-panel {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Maliit na screen: isang column ang mga topic at mas maliit ang padding ng panel */
+@media (max-width: 900px) {
+  .topics-grid {
+    grid-template-columns: 1fr;
+  }
+  #intro {
+    padding: 20px;
   }
 }
