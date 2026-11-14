@@ -1,4 +1,5 @@
-/* footer.css - layout ng footer, pareho sa lahat ng page */
+/* footer.css - layout ng footer, pareho sa lahat ng page.
+   Kapareho ng itsura ng mga card sa Home: bahagyang tinted na puti, rounded, soft shadow, walang itim na border. */
 
 footer {
   display: flex;
@@ -6,14 +7,22 @@ footer {
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
-  border: 1px solid;
+  border: 0;
   border-radius: 24px;
+  background-color: var(--card-bg, #f3fafc);
+  box-shadow: 0 8px 24px rgba(18, 59, 93, 0.12);
+  color: var(--deep-navy);
 }
 
 .footer-contact {
   flex: 1;
   padding-right: 20px;
-  border-right: 2px solid;
+  border-right: 2px solid var(--deep-navy);
+}
+
+/* "Contact Us": teal, kapareho ng pamagat ng mga card */
+.footer-contact h3 {
+  color: var(--card-title, #0f9aaf);
 }
 
 .footer-copy {
@@ -26,4 +35,15 @@ footer {
 .socials {
   display: flex;
   gap: 12px;
+}
+
+/* Social links: navy (hindi na asul/purple), ocean blue kapag na-hover */
+.socials a,
+.socials a:visited {
+  color: var(--deep-navy);
+}
+
+.socials a:hover,
+.socials a:focus-visible {
+  color: var(--ocean-blue);
 }

@@ -144,3 +144,136 @@ hr {
     grid-template-columns: 1fr;
   }
 }
+
+/* =====================================================================
+   BACKGROUND NG LEARN PAGE (galing sa designer)
+   Nasa dulo ng file ito para ito ang masunod sa mga naunang rule.
+   Ang learn.css ay sa Learn page lang naka-link, kaya hindi nito naaapektuhan ang ibang page.
+   ===================================================================== */
+
+:root {
+  --leaf-width: 17vw;      /* laki ng dahon (lapad). Palitan para paliitin o palakihin */
+  --leaf-right: 0px;       /* layo ng dahon mula sa kanang gilid */
+  --leaf-top: 0px;         /* layo ng dahon mula sa itaas ng page (natatakpan ng navbar ang taas nito) */
+  --tips-width: 78%;       /* lapad ng apat na card (ang natitirang espasyo sa kanan ay para sa dahon) */
+}
+
+/* Tatlong layer ng background (mula sa pinakaitaas): dahon, waves, at tubig.
+   scroll = gumagalaw kasama ng page (ang dahon ay nasa taas, ang waves ay nasa pinakababa).
+   fixed  = nananatili ang tubig kahit nag-scroll. */
+body {
+  background-color: #43aabc;   /* kulay habang naglo-load ang mga larawan */
+  background-image:
+    url("../images/learn-leaf.webp"),
+    url("../images/learn-wave.webp"),
+    url("../images/learn-bg.jpg");
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: right var(--leaf-right) top var(--leaf-top), left bottom, center;
+  background-size: var(--leaf-width) auto, 100% auto, cover;
+  background-attachment: scroll, scroll, fixed;
+}
+
+#conservation {
+  padding-top: 30px;
+}
+
+/* Heading at subtext ng Save Water, Save Life: puti, ayon sa design.
+   text-wrap: balance = pantay ang haba ng dalawang linya ("Save Water," / "Save Life") */
+#conservation h1 {
+  max-width: 9em;
+  margin: 0 0 20px;
+  font-size: var(--size-main-heading);
+  line-height: 1.15;
+  color: #fff;
+  text-wrap: balance;
+  text-shadow: 0 2px 10px rgba(18, 59, 93, 0.3);   /* para mas malinaw ang puting text sa teal */
+}
+
+#conservation > p {
+  max-width: 26em;
+  margin: 0 0 28px;
+  font-size: var(--size-subheading);
+  font-weight: 500;
+  line-height: 1.4;
+  color: #fff;
+  text-wrap: balance;
+  text-shadow: 0 2px 8px rgba(18, 59, 93, 0.3);
+}
+
+/* Ibang heading at text na direktang nasa teal: Deep Navy (mas malinaw sa kulay na ito) */
+main > section > h2,
+.sample-note {
+  color: var(--deep-navy);
+}
+
+hr {
+  border: 0;
+  border-top: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+/* APAT NA TIP CARD: mas maliit at nasa kaliwa; ang kanan ay bakante para sa dahon */
+.tips {
+  width: var(--tips-width);
+  gap: 16px;
+}
+
+.tip {
+  padding: 18px 14px 22px;
+  border-radius: 28px;
+}
+
+.tip img {
+  display: block;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 6px;
+}
+
+/* Pamagat: Ocean Blue, sa gitna. Description: Deep Navy, kaliwa ang mga linya pero nasa gitna ang buong block */
+.tip h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.6em;            /* dalawang linya, para pantay ang simula ng mga description */
+  margin: 10px 0 8px;
+  font-size: 20px;              /* pinakamaliit sa range ng designer (20-24px), para kasya sa makitid na card */
+  line-height: 1.3;
+  color: var(--ocean-blue);
+  text-align: center;
+  text-wrap: balance;
+}
+
+.tip p {
+  max-width: 90%;
+  margin: 0 auto;
+  font-weight: 500;
+  color: var(--deep-navy);
+  text-align: left;
+}
+
+/* Mga box: puti na bahagyang transparent (frosted), hindi plain at hindi masakit sa mata */
+.tip,
+.chart-card,
+.ref-card {
+  background-color: rgba(255, 255, 255, 0.88);
+  border: none;
+  box-shadow: 0 6px 18px rgba(18, 59, 93, 0.18);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* Footer: frosted white. Ang malaking margin sa ilalim ay para makita ang waves */
+footer {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  box-shadow: 0 6px 18px rgba(18, 59, 93, 0.18);
+  margin-bottom: 150px;
+}
+
+/* Maliit na screen: buong lapad ang mga card, mas maliit ang dahon */
+@media (max-width: 900px) {
+  :root {
+    --leaf-width: 24vw;
+    --tips-width: 100%;
+  }
+}

@@ -11,7 +11,7 @@
   --size-body: 16px;                               /* Body Text - 16px */
   --size-small: 14px;                              /* Small Text - 14px */
   --size-nav: 20px;                                /* Navigation - 14-16px */
-  --size-button: 32px;                             /* Button Text - 16px */
+  --size-button: 16px;                             /* Button Text - 16px */
 }
 
 body {

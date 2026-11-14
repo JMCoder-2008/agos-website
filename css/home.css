@@ -1,5 +1,22 @@
 /* home.css - LAYOUT ng Home page (video sa taas, card sa baba, tatlong column) */
 
+/* ===== BACKGROUND at MGA KULAY ng Home page =====
+   Ang background ay naka-fixed sa likod ng buong page (hindi gumagalaw kapag nag-scroll). File: images/background.jpg
+   Kapag wala pa ang file, ang kulay na --home-bg-color muna ang lalabas. */
+:root {
+  --home-bg-color: #dff3f9;   /* kulay habang wala pa / bago ma-load ang background */
+  --card-bg: #f3fafc;         /* background ng mga card: hindi purong puti para hindi masakit sa mata */
+  --card-title: #0f9aaf;      /* teal na kulay ng pamagat ng card (galing sa design) */
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--home-bg-color) url("../images/background.jpg") center / cover no-repeat;
+}
+
 main {
   max-width: 1100px;
   margin: 0 auto;
@@ -20,7 +37,21 @@ main {
   align-items: flex-start;
 }
 
-/* BUTTON (Explore Now): kapareho ng kulay at hugis ng mga button sa navbar */
+/* Heading: navy, malalaking letra, dalawang linya ("EVERY DROP" / "MATTERS."). Paragraph: dalawang linya rin */
+#hero h1 {
+  max-width: 9em;
+  margin: 0 0 18px;
+  color: var(--deep-navy);
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+#hero p {
+  max-width: 34em;
+  margin: 0 0 26px;
+}
+
+/* BUTTON (Explore Now): navy na may puting text */
 .button,
 .button:link,
 .button:visited {
@@ -29,8 +60,8 @@ main {
   gap: 12px;
   padding: 12px 28px;
   border-radius: 10px;
-  background-color: var(--ocean-blue);
-  color: black;
+  background-color: var(--deep-navy);
+  color: #fff;
   font-weight: 600;
   text-decoration: none;
   transition: background-color 0.25s ease, box-shadow 0.25s ease;
@@ -38,11 +69,12 @@ main {
 
 .button:hover,
 .button:focus-visible {
+  background-color: var(--ocean-blue);
   box-shadow: 0 4px 12px rgba(36, 151, 184, 0.45);
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--deep-navy);
+  outline: 2px solid var(--ocean-blue);
   outline-offset: 2px;
 }
 
@@ -77,6 +109,17 @@ html {
   }
 }
 
+/* INTRO: heading at paragraph sa taas ng tatlong video (navy) */
+#intro h2 {
+  margin: 0 0 12px;
+  color: var(--deep-navy);
+}
+
+#intro > p {
+  margin: 0 0 24px;
+  color: var(--deep-navy);
+}
+
 /* 2. TATLONG TOPIC: tatlong column. Gamit ang subgrid para pantay ang video, source, at card sa lahat ng column */
 .topics-grid {
   display: grid;
@@ -93,10 +136,10 @@ html {
 
 /* VIDEO: may border, bilog na gilid, at anino */
 .video-frame {
-  border: 3px solid;
+  border: 3px solid var(--ocean-blue);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 18px rgba(18, 59, 93, 0.18);
 }
 
 .video-frame iframe {
@@ -113,10 +156,12 @@ html {
 /* CARD: larawan, pamagat, description */
 .card {
   display: block;
-  padding: 12px;
-  border: 3px solid;
-  border-radius: 16px;
-  color: inherit;
+  padding: 16px;
+  border: 0;
+  border-radius: 24px;
+  background-color: var(--card-bg);
+  box-shadow: 0 8px 24px rgba(18, 59, 93, 0.12);
+  color: var(--deep-navy);
   text-decoration: none;
 }
 
@@ -125,15 +170,19 @@ html {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 18px;
 }
 
+/* Pamagat: teal. Description: navy, semi-bold */
 .card h3 {
-  margin: 12px 0 6px;
+  margin: 16px 6px 8px;
+  color: var(--card-title);
 }
 
 .card p {
-  margin: 0;
+  margin: 0 6px 6px;
+  font-weight: 600;
+  line-height: 1.5;
 }
 
 /* 3. FLOAT-UP ANIMATION: ang 3 video at 3 card ay lumulutang pataas kapag nag-scroll / pinindot ang Explore Now.
