@@ -460,3 +460,126 @@ button.quiz-back:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .pop-in, .fade-in { animation: none; }
 }
+
+/* =====================================================================
+   NAVY PANELS: Map section at Quiz
+   Parehong kulay ng navbar (Deep Navy papunta sa mas matingkad na asul), puti ang text.
+   Nasa dulo ng file ito para ito ang masunod sa mga naunang rule.
+   ===================================================================== */
+
+#map-section,
+#quiz {
+  background-color: var(--deep-navy);
+  background-image: linear-gradient(90deg, var(--nav-bg-start, #123B5D), var(--nav-bg-end, #17577d));
+  box-shadow: 0 6px 18px rgba(18, 59, 93, 0.25);
+  color: #fff;
+}
+
+/* ---------- MAP SECTION ---------- */
+#map-section {
+  padding: 30px;
+  border-radius: 24px;
+}
+
+#map-section h1 {
+  margin-top: 0;
+  color: #fff;
+}
+
+#ph-map {
+  border-radius: 18px;
+  background: #fff;   /* kulay habang naglo-load ang mapa */
+}
+
+/* Location card: maliwanag na card sa loob ng navy panel, itim ang text gaya ng dati */
+.location-card {
+  border: 0;
+  border-radius: 18px;
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  color: #111;
+}
+
+/* ---------- QUIZ ---------- */
+#quiz {
+  border: 0;
+}
+
+#quiz h2,
+.quiz-review-title {
+  color: #fff;
+}
+
+.quiz-progress {
+  opacity: 0.9;
+}
+
+/* Mga sagot: kulay at istilo ng search box (kulay-abong asul), puti kapag hinover */
+button.quiz-choice {
+  background: #e3e9ef;
+  border-color: #c3ccd6;
+  color: #123B5D;
+}
+
+button.quiz-choice:hover:not(:disabled) {
+  background: #fff;
+  border-color: var(--ocean-blue);
+}
+
+/* Ang correct at wrong ay nananatiling green at red (mas mataas na specificity kaysa sa taas) */
+button.quiz-choice.correct {
+  background: #dff5e6;
+  border-color: #1fa24a;
+  color: #0d5c27;
+}
+
+button.quiz-choice.wrong {
+  background: #fdeceb;
+  border-color: #d9302c;
+  color: #8f1b18;
+}
+
+/* Hindi na makikita ang navy button sa navy panel, kaya Ocean Blue ang Next at puti ang Back */
+button.quiz-next {
+  background: var(--ocean-blue);
+  color: #fff;
+}
+
+button.quiz-next:hover {
+  background: #fff;
+  color: var(--deep-navy);
+}
+
+button.quiz-back {
+  background: transparent;
+  border-color: #fff;
+  color: #fff;
+}
+
+button.quiz-back:hover {
+  background: #fff;
+  color: var(--deep-navy);
+}
+
+button.quiz-choice:focus-visible,
+button.quiz-next:focus-visible,
+button.quiz-back:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Resulta */
+.quiz-score {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.quiz-missed {
+  color: #111;   /* maliwanag ang card, kaya madilim ang text */
+}
+
+@media (max-width: 900px) {
+  #map-section {
+    padding: 20px;
+  }
+}
