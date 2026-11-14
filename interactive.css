@@ -1,0 +1,585 @@
+/* interactive.css - LAYOUT ng Interactive page (map at quiz). Posisyon at laki lang, wala pang design. */
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* MAP: mapa (3/4) at location card (1/4) na magkatabi */
+.map-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+#ph-map {
+  flex: 3;
+  min-width: 0;
+  height: 90vh;
+  min-height: 700px;
+  border: 0;
+  border-radius: 24px;
+}
+
+/* Location card: kasing-taas ng mapa. Hindi lumalaki ang card; ang description ang nag-i-scroll sa loob */
+.location-card {
+  flex: 1;
+  min-width: 0;
+  height: max(90vh, 700px);   /* kapareho ng taas ng mapa (#ph-map) */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Larawan sa taas, may border */
+.location-image {
+  flex: none;
+  display: block;
+  width: calc(100% - 24px);
+  height: 190px;
+  margin: 12px;
+  object-fit: cover;
+  border: 2px solid var(--deep-navy);
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+/* Description: tatlong bahagi (1, 2, 3), nag-i-scroll kapag mahaba */
+.location-description {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 4px 14px 14px;
+  font-size: 14px;
+}
+
+/* Bawat bahagi ay may linya sa pagitan */
+.loc-block {
+  padding: 14px 0;
+  border-bottom: 1px solid #d8dde2;
+}
+
+.loc-block:last-child {
+  border-bottom: 0;
+}
+
+.location-description h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.location-description .loc-kicker {
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--deep-navy);
+}
+
+.location-description p {
+  margin: 0;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.loc-note {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* "What You Can Discover": emoji sa kaliwa */
+.loc-list,
+.loc-legend {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+.loc-list li {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.loc-icon {
+  flex: none;
+  width: 22px;
+  text-align: center;
+}
+
+/* Drought Classification: may kulay na tuldok */
+.loc-legend {
+  margin-top: 8px;
+}
+
+.loc-legend li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.dot {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.dot-green  { background: #1fa24a; }
+.dot-yellow { background: #f5c400; }
+.dot-orange { background: #f57c1f; }
+.dot-red    { background: #d9302c; }
+.dot-gray   { background: #9aa0a6; }
+
+/* October 2026 Assessment */
+.loc-badge {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--ocean-blue);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.loc-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.loc-stat {
+  padding: 10px 8px;
+  border-radius: 10px;
+  line-height: 1.25;
+}
+
+.loc-stat strong {
+  display: block;
+  font-size: 24px;
+}
+
+.loc-stat span {
+  font-size: 12px;
+}
+
+.stat-red    { background: #fdeceb; }
+.stat-red strong    { color: #d9302c; }
+.stat-orange { background: #fff0e2; }
+.stat-orange strong { color: #e8680f; }
+.stat-yellow { background: #fff8d9; }
+.stat-yellow strong { color: #c99700; }
+
+.loc-tag {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: #e6e9ec;
+  font-size: 11px;
+}
+
+/* ===== QUIZ (Think Wise) ===== */
+#quiz {
+  max-width: 720px;
+  margin: 40px auto 0;
+  padding: 28px;
+  border: 2px solid var(--deep-navy);
+  border-radius: 24px;
+  box-sizing: border-box;
+}
+
+#quiz h2 {
+  margin: 0 0 16px;
+  color: var(--deep-navy);
+}
+
+/* Progress bar */
+.quiz-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #e6e9ec;
+  overflow: hidden;
+}
+
+.quiz-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--ocean-blue);
+  transition: width 0.4s ease;
+}
+
+.quiz-progress {
+  margin: 8px 0 18px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.quiz-question {
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: left;
+}
+
+/* Mga sagot: click lang, walang a. b. c. */
+.quiz-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+button.quiz-choice {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #c9d3dc;
+  border-radius: 16px;
+  background: #fff;
+  color: #111;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, transform 0.1s ease;
+}
+
+button.quiz-choice:hover:not(:disabled) {
+  border-color: var(--ocean-blue);
+  background: #eef8fb;
+}
+
+button.quiz-choice:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+button.quiz-choice:focus-visible,
+button.quiz-next:focus-visible {
+  outline: 3px solid var(--deep-navy);
+  outline-offset: 2px;
+}
+
+/* Pagkatapos sumagot */
+button.quiz-choice:disabled {
+  cursor: default;
+}
+
+button.quiz-choice.correct {
+  border-color: #1fa24a;
+  background: #dff5e6;
+  color: #0d5c27;
+  font-weight: 600;
+}
+
+button.quiz-choice.wrong {
+  border-color: #d9302c;
+  background: #fdeceb;
+  color: #8f1b18;
+  font-weight: 600;
+}
+
+button.quiz-choice.faded {
+  opacity: 0.5;
+}
+
+/* Explanation */
+.quiz-feedback {
+  margin-top: 18px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  line-height: 1.5;
+}
+
+.quiz-feedback p {
+  margin: 4px 0 0;
+  text-align: left;
+}
+
+.quiz-feedback.is-correct { background: #dff5e6; color: #0d5c27; }
+.quiz-feedback.is-wrong   { background: #fdeceb; color: #8f1b18; }
+
+/* Next / Try Again */
+button.quiz-next {
+  display: block;
+  margin: 18px 0 0 auto;
+  padding: 12px 26px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--deep-navy);
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button.quiz-next:hover {
+  background: var(--ocean-blue);
+}
+
+/* Results */
+.quiz-score {
+  padding: 24px;
+  border-radius: 20px;
+  background: var(--deep-navy);
+  color: #fff;
+  text-align: center;
+}
+
+.quiz-score p { margin: 0; text-align: center; }
+.quiz-score-label { font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.85; }
+.quiz-score-number { font-size: 56px; font-weight: 700; line-height: 1.2; }
+.quiz-score-percent { font-size: 20px; }
+
+.quiz-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 14px 0 6px;
+}
+
+.quiz-stat {
+  padding: 14px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.quiz-stat strong { display: block; font-size: 32px; }
+.quiz-stat span { font-size: 14px; }
+.stat-ok  { background: #dff5e6; color: #0d5c27; }
+.stat-bad { background: #fdeceb; color: #8f1b18; }
+
+.quiz-review-title {
+  margin: 22px 0 10px;
+  color: var(--deep-navy);
+}
+
+.quiz-missed {
+  margin-bottom: 12px;
+  padding: 14px 18px;
+  border: 2px solid #f1c4c2;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.quiz-missed p {
+  margin: 0 0 6px;
+  text-align: left;
+  line-height: 1.45;
+}
+
+.quiz-missed-q { font-weight: 600; }
+.quiz-missed-a span { font-weight: 600; }
+.quiz-missed-a.mine  { color: #b3241f; }
+.quiz-missed-a.right { color: #137a38; margin-bottom: 0; }
+
+.quiz-perfect {
+  margin: 18px 0 0;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: #dff5e6;
+  color: #0d5c27;
+  font-weight: 600;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  #quiz { padding: 18px; border-radius: 20px; }
+  .quiz-question { font-size: 18px; }
+  .quiz-score-number { font-size: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quiz-bar-fill, button.quiz-choice, button.quiz-next { transition: none; }
+}
+
+/* ===== QUIZ: Back / Next, animations (idinagdag) ===== */
+.quiz-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.quiz-nav button.quiz-next {
+  margin: 0 0 0 auto;      /* laging nasa kanan */
+}
+
+/* Kailangan ito para gumana ang hidden kahit may display sa button */
+.quiz-next[hidden],
+.quiz-back[hidden] {
+  display: none !important;
+}
+
+button.quiz-back {
+  padding: 12px 22px;
+  border: 2px solid var(--deep-navy);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--deep-navy);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+button.quiz-back:hover {
+  background: var(--deep-navy);
+  color: #fff;
+}
+
+button.quiz-back:focus-visible {
+  outline: 3px solid var(--deep-navy);
+  outline-offset: 2px;
+}
+
+.pop-in  { animation: quiz-pop 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; }
+.fade-in { animation: quiz-fade 0.35s ease both; }
+
+@keyframes quiz-pop {
+  from { opacity: 0; transform: translateY(14px) scale(0.92); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes quiz-fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pop-in, .fade-in { animation: none; }
+}
+
+/* =====================================================================
+   NAVY PANELS: Map section at Quiz
+   Parehong kulay ng navbar (Deep Navy papunta sa mas matingkad na asul), puti ang text.
+   Nasa dulo ng file ito para ito ang masunod sa mga naunang rule.
+   ===================================================================== */
+
+#map-section,
+#quiz {
+  background-color: var(--deep-navy);
+  background-image: linear-gradient(90deg, var(--nav-bg-start, #123B5D), var(--nav-bg-end, #17577d));
+  box-shadow: 0 6px 18px rgba(18, 59, 93, 0.25);
+  color: #fff;
+}
+
+/* ---------- MAP SECTION ---------- */
+#map-section {
+  padding: 30px;
+  border-radius: 24px;
+}
+
+#map-section h1 {
+  margin-top: 0;
+  color: #fff;
+}
+
+#ph-map {
+  border-radius: 18px;
+  background: #fff;   /* kulay habang naglo-load ang mapa */
+}
+
+/* Location card: maliwanag na card sa loob ng navy panel, itim ang text gaya ng dati */
+.location-card {
+  border: 0;
+  border-radius: 18px;
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  color: #111;
+}
+
+/* ---------- QUIZ ---------- */
+#quiz {
+  border: 0;
+}
+
+#quiz h2,
+.quiz-review-title {
+  color: #fff;
+}
+
+.quiz-progress {
+  opacity: 0.9;
+}
+
+/* Mga sagot: kulay at istilo ng search box (kulay-abong asul), puti kapag hinover */
+button.quiz-choice {
+  background: #e3e9ef;
+  border-color: #c3ccd6;
+  color: #123B5D;
+}
+
+button.quiz-choice:hover:not(:disabled) {
+  background: #fff;
+  border-color: var(--ocean-blue);
+}
+
+/* Ang correct at wrong ay nananatiling green at red (mas mataas na specificity kaysa sa taas) */
+button.quiz-choice.correct {
+  background: #dff5e6;
+  border-color: #1fa24a;
+  color: #0d5c27;
+}
+
+button.quiz-choice.wrong {
+  background: #fdeceb;
+  border-color: #d9302c;
+  color: #8f1b18;
+}
+
+/* Hindi na makikita ang navy button sa navy panel, kaya Ocean Blue ang Next at puti ang Back */
+button.quiz-next {
+  background: var(--ocean-blue);
+  color: #fff;
+}
+
+button.quiz-next:hover {
+  background: #fff;
+  color: var(--deep-navy);
+}
+
+button.quiz-back {
+  background: transparent;
+  border-color: #fff;
+  color: #fff;
+}
+
+button.quiz-back:hover {
+  background: #fff;
+  color: var(--deep-navy);
+}
+
+button.quiz-choice:focus-visible,
+button.quiz-next:focus-visible,
+button.quiz-back:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Resulta */
+.quiz-score {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.quiz-missed {
+  color: #111;   /* maliwanag ang card, kaya madilim ang text */
+}
+
+@media (max-width: 900px) {
+  #map-section {
+    padding: 20px;
+  }
+}
