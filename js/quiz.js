@@ -176,6 +176,7 @@ const quizQuestions = [
   let ui = {};
   function buildShell() {
     root.innerHTML = "";
+    root.className = "quiz-mode-question";   // layout ng tanong (dalawang column, may waves)
     root.appendChild(el("h2", "", "Think Wise"));
 
     const bar = el("div", "quiz-bar");
@@ -213,8 +214,11 @@ const quizQuestions = [
     const item = round[current];
     const picked = picks[current];
 
-    ui.fill.style.width = (current / round.length * 100) + "%";
-    ui.progress.textContent = "Question " + (current + 1) + " of " + round.length;
+    // Progress: Question 1 ay 1/10 na ang laman ng bar (gaya ng design); cyan ang numero ng kasalukuyang tanong
+    ui.fill.style.width = ((current + 1) / round.length * 100) + "%";
+    const num = el("span", "quiz-progress-num", String(current + 1));
+    ui.progress.textContent = "";
+    ui.progress.append("Question ", num, " of " + round.length);
     ui.question.textContent = item.q;
     replay(ui.question, "fade-in");
 
@@ -285,6 +289,7 @@ const quizQuestions = [
     const correct = total - wrong.length;
     const percent = Math.round(correct / total * 100);
     root.innerHTML = "";
+    root.className = "quiz-mode-results";    // layout ng resulta
 
     root.appendChild(el("h2", "", "Think Wise"));
 

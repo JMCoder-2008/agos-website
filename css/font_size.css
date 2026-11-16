@@ -1,56 +1,186 @@
-/* typography.css - LAHAT NG LAKI NG TEXT ng website (galing sa UI/UX designer).
-   Para magpalit ng laki: palitan lang ang mga numero sa :root sa ibaba. Awtomatikong magbabago ang lahat ng page.
-   Ang "clamp(pinakamaliit, nag-aadjust, pinakamalaki)" ay para sa range na ibinigay ng designer:
-   lumalaki o lumiliit ayon sa lapad ng screen pero hindi lalampas sa range. */
+/* font_size.css - LAHAT NG LAKI NG TEXT ng website (galing sa UI/UX designer).
+
+   PAANO GAMITIN:
+   - Bawat PAGE ay may sariling seksyon sa :root sa ibaba (HOME, LEARN, INTERACTIVE, ABOUT).
+   - Palitan lang ang numero ng gusto mong baguhin. Ang pagbabago sa isang page ay HINDI makakaapekto sa ibang page.
+   - Ang NAVIGATION at FOOTER lang ang pareho sa lahat ng page.
+   - Ang "clamp(pinakamaliit, nag-aadjust, pinakamalaki)" ay lumalaki o lumiliit ayon sa lapad ng screen
+     pero hindi lalampas sa range. Pwede mo itong palitan ng simpleng numero (hal. 30px).
+   - Ang mga rules sa baba ay may "body" sa unahan para ang mga ito ang masunod kahit may sariling size ang ibang css. */
 
 :root {
-  --size-main-heading: clamp(40px, 4vw, 48px);     /* Main Heading (H1) - 40-48px */
-  --size-page-heading: 36px;                       /* Page Heading (H1) - 36px */
-  --size-section-heading: clamp(28px, 3vw, 32px);  /* Section Heading (H2) - 28-32px */
-  --size-subheading: clamp(20px, 2vw, 24px);       /* Subheading (H3) - 20-24px */
-  --size-body: 16px;                               /* Body Text - 16px */
-  --size-small: 14px;                              /* Small Text - 14px */
-  --size-nav: 20px;                                /* Navigation - 14-16px */
-  --size-button: 16px;                             /* Button Text - 16px */
+
+  /* ================= NAVIGATION (pareho sa lahat ng page) ================= */
+  --size-nav: 20px;                                  /* Home, Learn, Interactive, About Us */
+
+  /* ================= HOME PAGE (index.html) ================= */
+  --home-hero-title: clamp(50px, 4vw, 58px);         /* "Every Drop Matters." */
+  --home-hero-text: 22px;                            /* sa ilalim ng "Every Drop Matters." */
+  --home-hero-button: 18px;                          /* "Explore Now" */
+  --home-intro-title: 35px;                          /* "LEARN AND DISCOVER" */
+  --home-intro-text: 20px;                           /* paragraph sa ilalim ng "Learn and Discover" */
+  --home-video-title: 15px;                          /* title na nasa ibabaw ng YouTube thumbnail */
+  --home-card-title: 26px;                           /* pamagat ng 3 card (Pax Silica, El Niño, Water Resources) */
+  --home-card-text: 18px;                            /* description sa ilalim ng pamagat ng card */
+
+  /* ================= LEARN PAGE (learn.html) ================= */
+  /* Save Water, Save Life */
+  --learn-hero-title: clamp(50px, 4vw, 58px);        /* "Save Water, Save Life" */
+  --learn-hero-text: clamp(22px, 2vw, 26px);         /* "Small actions today can protect..." */
+  --learn-tip-title: 20px;                           /* "Turn off the tap", "Fix leaks", atbp. */
+  --learn-tip-text: 18px;                            /* description sa ilalim ng tip title */
+
+  /* Environmental Data Dashboard */
+  --learn-data-title: clamp(32px, 3vw, 36px);        /* "Environmental Data Dashboard" */
+  --learn-sample-note: 22px;                         /* "Sample data" / "Description" sa ilalim ng dashboard title */
+
+  /* 4 na stat card (Temperature, Total, Average, Score) */
+  --learn-stat-label: 18px;                          /* "TEMPERATURE", "TOTAL", "AVERAGE", "SCORE" */
+  --learn-stat-value: 48px;                          /* ang malaking numero (24.3, 8.2, 8.05, 68) */
+  --learn-stat-caption: 18px;                        /* "avg surface temp", "estimated total", at iba pa */
+  --learn-stat-tag: 16px;                            /* "SAMPLE DATA" sa loob ng stat card */
+
+  /* 3 chart card (El Niño, Pax Silica, Water Resources) */
+  --learn-chart-title: 24px;                         /* "EL NIÑO", "PAX SILICA", "WATER RESOURCES" */
+  --learn-chart-tag: 18px;                           /* "description" sa loob ng chart card */
+  --learn-chart-source: 20px;                        /* "Source: ..." sa ilalim ng chart (kung may laman) */
+
+  /* Our References */
+  --learn-ref-title: clamp(32px, 3vw, 36px);         /* "Our References" */
+  --learn-ref-card-title: clamp(22px, 2vw, 26px);    /* "Trusted Sources", "Data", "Links" */
+  --learn-ref-list: 15px;                            /* mga nakalista sa loob ng reference card */
+
+  /* ================= INTERACTIVE PAGE (interactive.html) ================= */
+  /* Mapa at location card */
+  --int-title: 36px;                                 /* "Explore the Philippines" */
+  --int-subtitle: 18px;                              /* "Select a province on the map..." */
+  --int-loc-kicker: 15px;                            /* "Drought Monitoring in the Philippines" */
+  --int-loc-heading: 17px;                           /* "Understanding Drought Conditions", "What You Can Discover:", atbp. */
+  --int-loc-text: 14px;                              /* paragraph at listahan sa location card */
+  --int-loc-note: 13px;                              /* "PAGASA uses the following categories:", "Source: ..." */
+  --int-loc-badge: 12px;                             /* "October 2026 Assessment" */
+  --int-loc-stat-number: 24px;                       /* 5, 11, 10 */
+  --int-loc-stat-label: 12px;                        /* "Drought provinces", "Dry spell provinces", atbp. */
+  --int-loc-tag: 11px;                               /* PAGASA tag (yung link) */
+
+  /* Quiz */
+  --int-quiz-title: clamp(40px, 5vw, 60px);          /* "Knowledge Check" / "Think Wise" */
+  --int-quiz-progress: 14px;                         /* "Question 1 of 10" */
+  --int-quiz-question: 20px;                         /* ang tanong */
+  --int-quiz-choice: 16px;                           /* A, B, C, D na sagot */
+  --int-quiz-feedback: 17px;                         /* explanation sa kanan */
+  --int-quiz-button: 16px;                           /* Next, Back, Try Again */
+  --int-quiz-score-label: 14px;                      /* "YOUR SCORE" (final result) */
+  --int-quiz-score-number: 56px;                     /* malaking score (final result) */
+  --int-quiz-score-percent: 20px;                    /* percent (final result) */
+  --int-quiz-stat-number: 32px;                      /* bilang ng tama/mali (final result) */
+  --int-quiz-stat-label: 14px;                       /* "Correct", "Wrong" (final result) */
+
+  /* ================= ABOUT PAGE (about.html) ================= */
+  --about-purpose-title: 36px;                       /* "Purpose" */
+  --about-purpose-text: 18px;                        /* 3 paragraph ng Purpose */
+  --about-photo-text: 18px;                          /* text sa group photo placeholder */
+  --about-members-title: clamp(32px, 3vw, 36px);     /* "Project Members" */
+  --about-member-name: 18px;                         /* pangalan ng member (yung pinipindot/ho-hover) */
+  --about-member-role: 17px;                         /* role sa loob ng member card (Group Leader, atbp.) */
+  --about-member-text: 17px;                         /* description sa loob ng member card */
+
+  /* ================= FOOTER (pareho sa lahat ng page) ================= */
+  --size-footer-title: 24px;                         /* "Contact Us" */
+  --size-footer-text: 17px;                          /* email, number, social links, at copyright */
 }
 
+/* Mga maliliit na screen: ito ang mas maliit na laki ng quiz sa phone (600px pababa) */
+@media (max-width: 600px) {
+  :root {
+    --int-quiz-question: 18px;
+    --int-quiz-score-number: 44px;
+  }
+}
+
+/* Panimulang laki ng buong website (para sa mga text na walang sariling setting) */
 body {
-  font-size: var(--size-body);
+  font-size: 18px;
 }
 
-/* Mga heading */
-h1 {
-  font-size: var(--size-page-heading);
-}
-
-#hero h1 {
-  font-size: var(--size-main-heading);   /* ang malaking heading ng Home page */
-}
-
-h2 {
-  font-size: var(--size-section-heading);
-}
-
-h3 {
-  font-size: var(--size-subheading);
-}
-
-/* Navigation */
-nav a {
+/* ================= NAVIGATION ================= */
+body nav a {
   font-size: var(--size-nav);
 }
 
-/* Mga button */
-button,
-.button {
-  font-size: var(--size-button);
+/* ================= HOME ================= */
+body #hero h1            { font-size: var(--home-hero-title); }
+body #hero p             { font-size: var(--home-hero-text); }
+body #hero .button       { font-size: var(--home-hero-button); }
+body #intro h2           { font-size: var(--home-intro-title); }
+body #intro > p          { font-size: var(--home-intro-text); }
+body #intro .yt-title    { font-size: var(--home-video-title); }
+body .card h3            { font-size: var(--home-card-title); }
+body .card p             { font-size: var(--home-card-text); }
+
+/* ================= LEARN ================= */
+body #conservation h1    { font-size: var(--learn-hero-title); }
+body #conservation > p   { font-size: var(--learn-hero-text); }
+body .tip h3             { font-size: var(--learn-tip-title); }
+body .tip p              { font-size: var(--learn-tip-text); }
+
+body #data h2            { font-size: var(--learn-data-title); }
+body #data .sample-note  { font-size: var(--learn-sample-note); }
+
+body #data .stat-label   { font-size: var(--learn-stat-label); }
+body #data .stat-value   { font-size: var(--learn-stat-value); }
+body #data .stat-caption { font-size: var(--learn-stat-caption); }
+body #data .stat-card .sample-tag { font-size: var(--learn-stat-tag); }
+
+body #data .chart-card h3 { font-size: var(--learn-chart-title); }
+body #data .chart-card .sample-tag { font-size: var(--learn-chart-tag); }
+body #data .chart-source { font-size: var(--learn-chart-source); }
+
+body #references h2      { font-size: var(--learn-ref-title); }
+body #references .ref-card h3 { font-size: var(--learn-ref-card-title); }
+body #references .ref-list li,
+body #references .ref-list a  { font-size: var(--learn-ref-list); }
+
+/* ================= INTERACTIVE ================= */
+body #map-section h1     { font-size: var(--int-title); }
+body #map-section > p    { font-size: var(--int-subtitle); }
+
+body .location-description                  { font-size: var(--int-loc-text); }
+body .location-description h3               { font-size: var(--int-loc-heading); }
+body .location-description .loc-kicker      { font-size: var(--int-loc-kicker); }
+body .location-description .loc-note        { font-size: var(--int-loc-note); }
+body .location-description .loc-badge       { font-size: var(--int-loc-badge); }
+body .location-description .loc-stat strong { font-size: var(--int-loc-stat-number); }
+body .location-description .loc-stat span   { font-size: var(--int-loc-stat-label); }
+body .location-description .loc-tag         { font-size: var(--int-loc-tag); }
+
+body #quiz h2                  { font-size: var(--int-quiz-title); }
+body #quiz .quiz-progress      { font-size: var(--int-quiz-progress); }
+body #quiz .quiz-question      { font-size: var(--int-quiz-question); }
+body #quiz button.quiz-choice  { font-size: var(--int-quiz-choice); }
+body #quiz.quiz-mode-question > .quiz-feedback { font-size: var(--int-quiz-feedback); }
+body #quiz button.quiz-next,
+body #quiz button.quiz-back    { font-size: var(--int-quiz-button); }
+body #quiz .quiz-score-label   { font-size: var(--int-quiz-score-label); }
+body #quiz .quiz-score-number  { font-size: var(--int-quiz-score-number); }
+body #quiz .quiz-score-percent { font-size: var(--int-quiz-score-percent); }
+body #quiz .quiz-stat strong   { font-size: var(--int-quiz-stat-number); }
+body #quiz .quiz-stat span     { font-size: var(--int-quiz-stat-label); }
+
+/* ================= ABOUT ================= */
+body #purpose h1           { font-size: var(--about-purpose-title); }
+body #purpose p            { font-size: var(--about-purpose-text); }
+body .group-photo          { font-size: var(--about-photo-text); }
+body #members h2           { font-size: var(--about-members-title); }
+body .member-list li       { font-size: var(--about-member-name); }
+body .member-info h3       { font-size: var(--about-member-role); }
+body .member-info p        { font-size: var(--about-member-text); }
+
+/* ================= FOOTER ================= */
+body .footer-contact h3 {
+  font-size: var(--size-footer-title);
 }
 
-/* Maliliit na text (source, label, caption) */
-small,
-.video-source,
-.chart-source,
-.sample-tag,
-.sample-note {
-  font-size: var(--size-small);
+body footer p {
+  font-size: var(--size-footer-text);
 }

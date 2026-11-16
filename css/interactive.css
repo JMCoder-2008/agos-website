@@ -583,3 +583,118 @@ button.quiz-back:focus-visible {
     padding: 20px;
   }
 }
+
+/* =====================================================================
+   QUIZ LAYOUT (galing sa designer): malapad, dalawang column, may waves sa baba
+   Kaliwa: pamagat, tanong, mga sagot, "Question 1 of 10" at progress bar.
+   Kanan: ang explanation (lalabas pagkatapos sumagot) at ang Back / Next sa ibaba.
+   Ang waves ay galing sa images/learn-wave.webp (ang parehong larawan ng Learn page).
+   Nasa dulo ng file ito para ito ang masunod sa mga naunang rule.
+   ===================================================================== */
+
+#quiz {
+  --quiz-title: #04b8ce;                            /* light blue na kulay ng "Think Wise" (kinuha sa design) */
+  --quiz-wave-h: clamp(90px, 11vw, 150px);          /* pinakamataas na bahagi ng waves; ang sobra ay hindi makikita */
+  position: relative;
+  width: 100%;
+  max-width: none;                                  /* kasinglapad ng buong main, parang "AutoFit to Window" */
+  padding: 40px 48px calc(var(--quiz-wave-h) + 28px);
+  overflow: hidden;                                 /* para sumunod ang waves sa bilog na gilid */
+}
+
+/* WAVES sa ilalim. Hindi nito hinaharangan ang mga click */
+#quiz::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--quiz-wave-h);
+  background: url("../images/learn-wave.webp") left bottom / 100% auto no-repeat;
+  pointer-events: none;
+}
+
+/* "Think Wise": light blue, malaki */
+#quiz h2 {
+  margin: 0 0 20px;
+  color: var(--quiz-title);
+  font-size: clamp(40px, 5vw, 60px);
+  line-height: 1.1;
+}
+
+/* ----- Layout ng tanong ----- */
+#quiz.quiz-mode-question {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr auto auto;
+  grid-template-areas:
+    "title    side"
+    "question side"
+    "choices  side"
+    "progress nav"
+    "bar      nav";
+  column-gap: 48px;
+  min-height: clamp(560px, 78vh, 760px);
+}
+
+#quiz.quiz-mode-question > h2             { grid-area: title; }
+#quiz.quiz-mode-question > .quiz-question { grid-area: question; }
+#quiz.quiz-mode-question > .quiz-choices  { grid-area: choices; align-self: start; }
+#quiz.quiz-mode-question > .quiz-progress { grid-area: progress; margin: 24px 0 8px; opacity: 1; font-weight: 600; }
+#quiz.quiz-mode-question > .quiz-bar      { grid-area: bar; }
+
+/* Explanation: nasa kanan, sa tabi ng mga sagot */
+#quiz.quiz-mode-question > .quiz-feedback {
+  grid-area: side;
+  align-self: center;
+  margin-top: 0;
+  padding: 20px 24px;
+  font-size: 17px;
+}
+
+/* Progress: cyan ang numero ng tanong at ang bar (gaya ng design) */
+#quiz .quiz-progress-num {
+  color: var(--quiz-title);
+}
+
+#quiz .quiz-bar-fill {
+  background: var(--quiz-title);
+}
+
+/* Back / Next: kanang ibaba, kapantay ng progress bar */
+#quiz.quiz-mode-question > .quiz-nav {
+  grid-area: nav;
+  align-self: end;
+  justify-content: flex-end;
+  margin-top: 0;
+}
+
+/* Maliit na screen: isang column lang, nasa ilalim ng mga sagot ang explanation */
+@media (max-width: 900px) {
+  #quiz {
+    padding: 24px 20px calc(var(--quiz-wave-h) + 20px);
+  }
+
+  #quiz.quiz-mode-question {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-template-areas:
+      "title"
+      "question"
+      "choices"
+      "side"
+      "progress"
+      "bar"
+      "nav";
+    min-height: 0;
+  }
+
+  #quiz.quiz-mode-question > .quiz-feedback {
+    align-self: start;
+    margin-top: 18px;
+  }
+
+  #quiz.quiz-mode-question > .quiz-nav {
+    margin-top: 18px;
+  }
+}

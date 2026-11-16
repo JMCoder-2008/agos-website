@@ -214,3 +214,19 @@ main {
     padding: 20px;
   }
 }
+
+
+/* =====================================================================
+   BACKGROUND NG ABOUT US PAGE
+   File ng larawan: images/about-bg.jpg  (kapag wala pa ito, ang maputlang asul na kulay muna ang lalabas)
+   Naka-fixed sa likod ng buong page (hindi gumagalaw kapag nag-scroll).
+   Ang mga panel (Purpose, Project Members) ay navy na, kaya mababasa kahit anong larawan ang nasa likod.
+   ===================================================================== */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #dff3f9 url("../images/about-bg.jpg") center / cover no-repeat;
+}
