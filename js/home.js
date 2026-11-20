@@ -1,19 +1,17 @@
-// home.js - float-up animation ng navy panel, 3 video at 3 card sa Home page.
-// Lumalabas ang bawat isa kapag napasok na sa screen (nag-scroll o pinindot ang Explore Now).
-// Hindi sabay-sabay: bawat column ay 0.15s na huli sa kaliwa, at ang mga card ay 0.3s na huli sa mga video sa taas nila.
-// Para baguhin ang bilis: palitan ang mga numero sa ibaba (seconds). Ang haba ng galaw ay nasa css/home.css (.reveal).
+// home.js - float-up animation in "LEARN AND DISCOVER"
+// change speed here; speed move (reveal)
 
 (function () {
-  const COLUMN_DELAY = 0.15;   // huli ng bawat column (0.15s, 0.30s)
-  const CARD_DELAY   = 0.3;    // dagdag na huli ng card kumpara sa video
-  const PANEL_WAIT   = 350;    // ms: lalabas muna ang navy panel, tapos saka magsisimula ang mga video at card
+  const COLUMN_DELAY = 0.15;   //delay of every column (0.15s, 0.30s)
+  const CARD_DELAY   = 0.3;    // delay for cards
+  const PANEL_WAIT   = 350;    // panel(navy blue bg) first and how much delay before the video and card show up
 
   const panel = document.getElementById("intro");
   const items = document.querySelectorAll(".topics-grid .video-frame, .topics-grid .card");
   if (!items.length || !("IntersectionObserver" in window)) return;   // walang animation, nakikita pa rin lahat
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  // Anong column ang elemento (0, 1, 2)
+  //  column element (0, 1, 2)
   function column(item) {
     const topics = Array.from(document.querySelectorAll(".topics-grid .topic"));
     return topics.indexOf(item.closest(".topic"));
@@ -33,8 +31,8 @@
       if (item.classList.contains("card") && withVideos) delay += CARD_DELAY;
       item.style.transitionDelay = delay + "s";
       item.classList.add("in");
-      observer.unobserve(item);   // isang beses lang
-      // Pagkatapos ng animation, tanggalin ang delay para hindi maantala ang hover at iba pa
+      observer.unobserve(item);   // one time
+      //after animation, delay is removed, so that hover doesn't get bugs
       setTimeout(function () { item.style.transitionDelay = ""; }, (delay + 0.7) * 1000);
     });
   }, { threshold: 0.15 });
@@ -45,7 +43,7 @@
 
   if (!panel) { startItems(); return; }
 
-  // 1. Panel muna: lumulutang kapag nakikita na. 2. Pagkatapos ng PANEL_WAIT ms, ang mga video at card.
+  //1. panel first: the navy blue background, float up animation. 2. PANEL_WAIT, and the card and video
   const panelObserver = new IntersectionObserver(function (entries) {
     if (!entries.some(function (e) { return e.isIntersecting; })) return;
     panelObserver.disconnect();
@@ -56,9 +54,8 @@
 })();
 
 // ===== YOUTUBE FACADE =====
-// Hindi pwedeng i-cache ang YouTube iframe, kaya nagfli-flicker ito habang gumagalaw. Kaya larawan (thumbnail) muna ang ipinapakita
-// (na nakakacache ng browser), at ilo-load lang ang totoong video kapag kinlick ang play. Hindi na kailangang galawin ang HTML:
-// kinukuha ng code na ito ang video ID at title mula sa <iframe> na nasa index.html.
+// thumbnail muna bago ang buong video para di mag-fliker
+//this code is getting the video id and title from the <iframe in index.html
 (function () {
   document.querySelectorAll(".topics-grid .video-frame").forEach(function (frame) {
     const iframe = frame.querySelector("iframe");
@@ -73,7 +70,8 @@
     btn.className = "yt-facade";
     btn.setAttribute("aria-label", "Play video: " + title);
 
-    // Pinakamalinaw muna (maxres). Kung wala nito ang video, hqdefault ang gagamitin
+
+    // high resolution first (maxres). if this video doesn't have, "hqdefault" will be use.
     const img = document.createElement("img");
     img.alt = "";
     img.decoding = "async";
@@ -81,7 +79,7 @@
     img.addEventListener("error", function () {
       if (!img.dataset.fallback) { img.dataset.fallback = "1"; img.src = "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg"; }
     });
-    // Ang maxres na walang laman ay 120px lang ang lapad; palitan din ng hqdefault
+    //maxres that is empty is 120px of width
     img.addEventListener("load", function () {
       if (img.naturalWidth <= 120 && !img.dataset.fallback) { img.dataset.fallback = "1"; img.src = "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg"; }
     });
@@ -97,7 +95,7 @@
 
     btn.append(img, cap, play);
 
-    // Kapag kinlick: ilagay ang totoong video at awtomatikong mag-play
+    //when click: the video will automatic played
     btn.addEventListener("click", function () {
       iframe.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1";
       iframe.removeAttribute("loading");

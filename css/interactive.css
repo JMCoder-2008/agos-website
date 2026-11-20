@@ -698,3 +698,20 @@ button.quiz-back:focus-visible {
     margin-top: 18px;
   }
 }
+
+
+/* =====================================================================
+   BACKGROUND NG INTERACTIVE PAGE: tuyo / drought
+   Ang animation (ulap na hinihipan ng hangin, alikabok, basag na lupa) ay galing sa js/dry-bg.js,
+   isang canvas na naka-fixed sa likod ng page.
+   Ang gradient sa ibaba ay fallback lang: lalabas habang naglo-load ang script,
+   o kapag naka-off ang JavaScript.
+   ===================================================================== */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #f7ecd6 0%, #f2d59b 55%, #e4b46d 100%);
+}

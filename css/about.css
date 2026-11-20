@@ -15,9 +15,14 @@ main {
   justify-content: center;
 }
 
+/* Group photo: navy blue na border, parehong kulay at rounded na gaya ng mga panel (Purpose, Project Members) */
 #picture img {
+  display: block;
   width: 100%;
-  border-radius: 16px;
+  box-sizing: border-box;
+  border: 5px solid var(--deep-navy);   /* kapal ng border: palitan ang 5px */
+  border-radius: 24px;
+  box-shadow: 0 6px 18px rgba(18, 59, 93, 0.25);
 }
 
 /* PROJECT MEMBERS: dalawang column, apat na pangalan bawat isa */
@@ -217,10 +222,11 @@ main {
 
 
 /* =====================================================================
-   BACKGROUND NG ABOUT US PAGE
-   File ng larawan: images/about-bg.jpg  (kapag wala pa ito, ang maputlang asul na kulay muna ang lalabas)
-   Naka-fixed sa likod ng buong page (hindi gumagalaw kapag nag-scroll).
-   Ang mga panel (Purpose, Project Members) ay navy na, kaya mababasa kahit anong larawan ang nasa likod.
+   BACKGROUND NG ABOUT US PAGE: animated na tubig
+   Ang animation ay galing sa js/water-bg.js (canvas na naka-fixed sa likod ng page).
+   Ang gradient sa ibaba ay fallback lang: lalabas habang naglo-load ang script,
+   o kapag naka-off ang JavaScript.
+   Ang mga panel (Purpose, Project Members) ay navy na, kaya mababasa kahit gumagalaw ang likod.
    ===================================================================== */
 
 body::before {
@@ -228,5 +234,5 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: #dff3f9 url("../images/about-bg.jpg") center / cover no-repeat;
+  background: linear-gradient(180deg, #e6f6fb 0%, #8fd3e3 100%);
 }
