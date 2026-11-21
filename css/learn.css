@@ -171,7 +171,7 @@ hr {
   font-size: 13px;
   line-height: 1.35;
   color: var(--deep-navy);
-  opacity: 0.8;
+  opacity: 0.92;
 }
 
 .ref-list a:hover {
@@ -302,7 +302,7 @@ hr {
 .tip,
 .chart-card,
 .ref-card {
-  background-color: rgba(255, 255, 255, 0.80);   /* dati 0.88: mas kita ang background. Huwag bababa sa ~0.70 para mabasa pa */
+  background-color: rgba(255, 255, 255, 0.65);   /* dati 0.88. Pinakamababa na basa pa rin ang navy text; huwag bababa sa ~0.60 */
   border: none;
   box-shadow: 0 6px 18px rgba(18, 59, 93, 0.18);
   /* WALANG backdrop-filter (blur): nakaka-lag sa pag-scroll lalo na kapag nakapatong sa isa pang blur na panel */
@@ -387,7 +387,7 @@ hr {
 
 /* Pamagat ng tip card: bahagyang mas madilim na Ocean Blue para mabasa sa kulay-abong asul */
 #conservation .tip h3 {
-  color: #1b7f9c;
+  color: #08697a;
 }
 
 @media (max-width: 900px) {
@@ -396,21 +396,4 @@ hr {
   #references {
     padding: 20px;
   }
-}
-
-:root {
-  --header-height: 58px;   /* taas ng navbar. Palitan kung nagbago ang laki ng navbar/logo */
-}
-
-main {
-  display: grid;
-  grid-template-columns: 100%;
-  /* Unang row = isang buong screen (minus ang navbar at ang padding ng main sa taas at baba).
-     Kapag mas matangkad ang panel kaysa sa screen, lalaki ang row ayon sa panel. */
-  grid-template-rows: minmax(calc(100vh - var(--header-height) - 40px), auto);
-  grid-template-rows: minmax(calc(100svh - var(--header-height) - 40px), auto);
-}
-
-#conservation {
-  align-self: center;   /* nasa gitna ng screen (pataas-pababa); nasa kaliwa pa rin dahil sa lapad (--tips-width) */
 }

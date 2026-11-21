@@ -6,7 +6,7 @@
 :root {
   --home-bg-color: #dff3f9;   /* kulay habang wala pa / bago ma-load ang background */
   --card-bg: #f3fafc;         /* background ng mga card: hindi purong puti para hindi masakit sa mata */
-  --card-title: #0b7d8e;      /* teal na kulay ng pamagat ng card: bahagyang pinadilim (dati #0f9aaf) para mabasa pa rin sa semi-transparent na card */
+  --card-title: #08697a;      /* teal na kulay ng pamagat ng card: pinadilim (dati #0f9aaf) para mabasa pa rin sa semi-transparent na card */
 }
 
 body::before {
@@ -170,7 +170,7 @@ html {
   padding: 16px;
   border: 0;
   border-radius: 24px;
-  background-color: rgba(243, 250, 252, 0.75);   /* dati solid (--card-bg). Semi-transparent para kita ang background; huwag bababa sa ~0.70. Hindi ginalaw ang --card-bg kasi ginagamit din ng footer */
+  background-color: rgba(243, 250, 252, 0.65);   /* dati solid (--card-bg). Semi-transparent para kita ang background; huwag bababa sa ~0.60. Hindi ginalaw ang --card-bg kasi ginagamit din ng footer */
   box-shadow: 0 8px 24px rgba(18, 59, 93, 0.12);
   color: var(--deep-navy);
   text-decoration: none;

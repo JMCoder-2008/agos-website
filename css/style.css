@@ -21,11 +21,15 @@
   --navbar-line: 0px;      /* WALA na ang light-blue na linya sa ilalim ng navbar (dati 4px) */
   --divider-line: 2px;     /* kapal ng patayong linya sa pagitan ng logo at menu */
   /* MGA PANEL (navy na kahon sa mga page): semi-transparent para makita ang background.
-     --panel-alpha: 1 = solid (walang kita), 0.78 = kasalukuyan, 0.5 = mas kita ang background pero mas mahirap basahin */
-  --panel-alpha: 0.72;
-  --panel-bg-start: rgba(18, 59, 93, var(--panel-alpha));
-  --panel-bg-end: rgba(23, 87, 125, var(--panel-alpha));
-  --panel-blur: 4px;       /* labo ng background sa likod ng panel para hindi sumabay sa text */
+     --panel-alpha: 1 = solid (walang kita), 0.62 = kasalukuyan (pinakamababa na basa pa rin ang puting text),
+     0.5 pababa = hindi na mabasa sa maliwanag na background.
+     Mas madilim ang base na navy (8,32,62) kaysa sa navbar para kahit mababa ang alpha, mataas pa rin ang contrast. */
+  --panel-alpha: 0.62;
+  --panel-bg-start: rgba(8, 32, 62, var(--panel-alpha));
+  --panel-bg-end: rgba(10, 42, 74, var(--panel-alpha));
+  --panel-blur: 4px;       /* hindi na ginagamit ng mga panel (inalis ang blur para gumaan ang pag-scroll) */
+  /* Maliit na anino sa likod ng puting text sa panel para mas luminaw kahit may maliwanag na parte sa likod */
+  --panel-text-shadow: 0 1px 3px rgba(4, 16, 34, 0.55);
   --content-width: 1140px; /* buong lapad ng main sa Home: max-width 1100 + padding 20 sa magkabilang gilid */
   --content-inset: 40px;   /* layo ng unang letra ng heading mula sa kaliwang gilid ng main (padding ng main + hero) */
 }
@@ -37,26 +41,13 @@ body {
 /* Linya na naghihiwalay sa navbar at sa page.
    sticky = dumidikit sa taas ng screen kahit nag-scroll. Ang klaseng .nav-hidden (galing sa js/script.js) ang nagtatago nito */
 header {
-  position: fixed;   /* nakakabit sa screen mismo (hindi sa page), kaya hindi gumagalaw kahit mag-bounce ang page sa trackpad */
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 100;
   background: var(--deep-navy);   /* kulay habang wala pa ang gradient */
   background-image: linear-gradient(90deg, var(--nav-bg-start), var(--nav-bg-end));
   border-bottom: 0;   /* tinanggal na ang light-blue na linya sa ilalim */
   transition: transform 0.35s ease;
-}
-
-/* Pamalit sa espasyong dating inookupa ng navbar. Ang --header-h ay sinusukat ng js/script.js (58px lang ang panimula) */
-body {
-  padding-top: var(--header-h, 58px);
-}
-
-/* Walang bounce/stretch sa pinakataas at pinakababa ng page (trackpad), kaya hindi nagagalaw ang layout */
-html,
-body {
-  overscroll-behavior-y: none;
 }
 
 header.nav-hidden {
@@ -187,4 +178,19 @@ nav ul a:focus-visible {
   nav ul a {
     transition: none;
   }
+}
+
+/* =====================================================================
+   Anino ng puting text sa navy panel (mga heading at paragraph na nasa panel mismo).
+   Hindi kasama ang text sa loob ng puting card (navy ang text nila).
+   ===================================================================== */
+#intro h2, #intro > p,
+#purpose h1, #purpose > p,
+#members h2,
+#map-section h1,
+#quiz h2, .quiz-question, .quiz-progress, .quiz-score, .quiz-stats, .quiz-review-title,
+#conservation > h1, #conservation > h2, #conservation > p,
+#data > h2, #data .stat-note, #data .stat-card,
+#references > h2 {
+  text-shadow: var(--panel-text-shadow);
 }
