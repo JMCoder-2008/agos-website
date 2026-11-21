@@ -1,8 +1,9 @@
 /* home.css - LAYOUT ng Home page (video sa taas, card sa baba, tatlong column) */
 
 /* ===== BACKGROUND at MGA KULAY ng Home page =====
-   Ang background ay naka-fixed sa likod ng buong page (hindi gumagalaw kapag nag-scroll). File: images/background.jpg
-   Kapag wala pa ang file, ang kulay na --home-bg-color muna ang lalabas. */
+   Ang background ay PURE ANIMATION na (walang larawan): iginuguhit ng js/home-bg.js sa isang canvas na naka-fixed
+   sa likod ng buong page. Ang gradient sa ibaba ay fallback lang: lalabas habang naglo-load ang script,
+   o kapag naka-off ang JavaScript. */
 :root {
   --home-bg-color: #dff3f9;   /* kulay habang wala pa / bago ma-load ang background */
   --card-bg: #f3fafc;         /* background ng mga card: hindi purong puti para hindi masakit sa mata */
@@ -14,7 +15,17 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: var(--home-bg-color) url("../images/background.jpg") center / cover no-repeat;
+  /* Fallback: langit (asul sa taas, lumiliwanag pababa), tubig sa baba, parehong kulay ng animation */
+  background: var(--home-bg-color) linear-gradient(180deg, #3a9fc4 0%, #76c7df 37%, #bfe8f3 73%, #92d9ea 74%, #2a8fb5 100%);
+}
+
+/* Ang canvas (js/home-bg.js) ay nasa ibabaw ng fallback at nasa likod ng page */
+.home-bg-canvas {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  pointer-events: none;
 }
 
 main {

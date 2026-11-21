@@ -308,6 +308,7 @@
       if (drop.y + hh >= groundY()) {
         var power = Math.max(0.65, Math.min(1.15, drop.vy / (H * 1.3)));
         makeSplash(leaf.tipX, groundY(), power);
+        try { window.dispatchEvent(new CustomEvent("agos-splash", { detail: { x: leaf.tipX, y: groundY(), power: power } })); } catch (e) {}   // para sa js/learn-bg.js
         startDrop();
       } else {
         drawDrop(leaf.tipX, drop.y, sx, stretch, 1);

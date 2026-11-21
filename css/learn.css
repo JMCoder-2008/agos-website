@@ -201,19 +201,45 @@ hr {
   --tips-width: 78%;       /* lapad ng apat na card (ang natitirang espasyo sa kanan ay para sa dahon) */
 }
 
-/* Tatlong layer ng background (mula sa pinakaitaas): dahon, waves, at tubig.
-   scroll = gumagalaw kasama ng page (ang dahon ay nasa taas, ang waves ay nasa pinakababa).
-   fixed  = nananatili ang tubig kahit nag-scroll. */
+/* Background: gumagalaw na tubig (js/learn-bg.js, nasa ilalim), tapos ang waves at ang dahon,
+   tapos ang bumabagsak na patak (js/water-drop.js, nasa ibabaw ng dahon).
+   Ang dahon at waves ay nag-i-scroll kasama ng page (dahon sa taas, waves sa pinakababa);
+   ang tubig ay nananatili sa screen. Ang laki ng dahon ay galing pa rin sa --leaf-width. */
 body {
-  background-color: #43aabc;   /* kulay habang naglo-load ang mga larawan */
-  background-image:
-    url("../images/learn-leaf-only.webp"),
-    url("../images/learn-wave.webp"),
-    url("../images/learn-bg.jpg");
-  background-repeat: no-repeat, no-repeat, no-repeat;
-  background-position: right var(--leaf-right) top var(--leaf-top), left bottom, center;
-  background-size: var(--leaf-width) auto, 100% auto, cover;
-  background-attachment: scroll, scroll, fixed;
+  position: relative;
+  background-color: #43aabc;   /* kulay habang naglo-load */
+}
+
+.learn-bg-canvas {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -3;
+  pointer-events: none;
+}
+
+body::before {                 /* ang dahon */
+  content: "";
+  position: absolute;
+  top: var(--leaf-top);
+  right: var(--leaf-right);
+  width: var(--leaf-width);
+  aspect-ratio: 640 / 1112;
+  background: url("../images/learn-leaf-only.webp") no-repeat right top / 100% 100%;
+  z-index: -2;
+  pointer-events: none;
+}
+
+body::after {                  /* ang waves sa pinakababa ng page */
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  aspect-ratio: 2944 / 352;
+  background: url("../images/learn-wave.webp") no-repeat left bottom / 100% 100%;
+  z-index: -2;
+  pointer-events: none;
 }
 
 #conservation {

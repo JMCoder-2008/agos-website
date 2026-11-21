@@ -9,7 +9,7 @@ footer {
   padding: 16px;
   border: 0;
   border-radius: 24px;
-  background-color: var(--card-bg, #f3fafc);
+  background-color: rgba(243, 250, 252, 0.65);   /* dati solid. Semi-transparent para kita ang background; huwag bababa sa ~0.60 */
   box-shadow: 0 8px 24px rgba(18, 59, 93, 0.12);
   color: var(--deep-navy);
 }
@@ -22,7 +22,7 @@ footer {
 
 /* "Contact Us": teal, kapareho ng pamagat ng mga card */
 .footer-contact h3 {
-  color: var(--card-title, #0f9aaf);
+  color: #08697a;   /* mas dark na teal para mabasa sa semi-transparent na card */
 }
 
 .footer-copy {
