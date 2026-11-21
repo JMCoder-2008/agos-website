@@ -15,11 +15,17 @@
   --nav-hover-bg: rgba(255, 255, 255, 0.16);  /* kapag na-hover */
   --nav-divider: rgba(255, 255, 255, 0.45);   /* patayong linya sa tabi ng logo */
 
-  --logo-height: 70px;     /* laki ng logo */
-  --nav-gap: 40px;         /* espasyo sa pagitan ng logo at ng menu */
+  --logo-height: 46px;     /* laki ng logo (dati 70px) */
+  --nav-gap: 32px;         /* espasyo sa pagitan ng logo at ng menu */
   --nav-link-gap: 8px;     /* espasyo sa pagitan ng mga menu button */
-  --navbar-line: 4px;      /* kapal ng linya sa ilalim ng navbar */
+  --navbar-line: 0px;      /* WALA na ang light-blue na linya sa ilalim ng navbar (dati 4px) */
   --divider-line: 2px;     /* kapal ng patayong linya sa pagitan ng logo at menu */
+  /* MGA PANEL (navy na kahon sa mga page): semi-transparent para makita ang background.
+     --panel-alpha: 1 = solid (walang kita), 0.78 = kasalukuyan, 0.5 = mas kita ang background pero mas mahirap basahin */
+  --panel-alpha: 0.72;
+  --panel-bg-start: rgba(18, 59, 93, var(--panel-alpha));
+  --panel-bg-end: rgba(23, 87, 125, var(--panel-alpha));
+  --panel-blur: 4px;       /* labo ng background sa likod ng panel para hindi sumabay sa text */
   --content-width: 1140px; /* buong lapad ng main sa Home: max-width 1100 + padding 20 sa magkabilang gilid */
   --content-inset: 40px;   /* layo ng unang letra ng heading mula sa kaliwang gilid ng main (padding ng main + hero) */
 }
@@ -31,13 +37,26 @@ body {
 /* Linya na naghihiwalay sa navbar at sa page.
    sticky = dumidikit sa taas ng screen kahit nag-scroll. Ang klaseng .nav-hidden (galing sa js/script.js) ang nagtatago nito */
 header {
-  position: sticky;
+  position: fixed;   /* nakakabit sa screen mismo (hindi sa page), kaya hindi gumagalaw kahit mag-bounce ang page sa trackpad */
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   background: var(--deep-navy);   /* kulay habang wala pa ang gradient */
   background-image: linear-gradient(90deg, var(--nav-bg-start), var(--nav-bg-end));
-  border-bottom: var(--navbar-line) solid var(--ocean-blue);   /* Ocean Blue na linya sa ilalim ng navy */
+  border-bottom: 0;   /* tinanggal na ang light-blue na linya sa ilalim */
   transition: transform 0.35s ease;
+}
+
+/* Pamalit sa espasyong dating inookupa ng navbar. Ang --header-h ay sinusukat ng js/script.js (58px lang ang panimula) */
+body {
+  padding-top: var(--header-h, 58px);
+}
+
+/* Walang bounce/stretch sa pinakataas at pinakababa ng page (trackpad), kaya hindi nagagalaw ang layout */
+html,
+body {
+  overscroll-behavior-y: none;
 }
 
 header.nav-hidden {
@@ -56,7 +75,7 @@ header.nav-hidden {
 
 /* Kapag pumunta sa #section, huwag matakpan ng navbar ang heading */
 html {
-  scroll-padding-top: 110px;
+  scroll-padding-top: 70px;
 }
 
 /* 3 column: logo (kaliwa) | menu (gitna) | bakanteng espasyo (kanan)
@@ -66,7 +85,7 @@ nav {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: var(--nav-gap);
-  padding: 10px 40px;
+  padding: 6px 40px;   /* manipis na navbar (dati 10px) */
   position: relative;
 }
 
@@ -75,8 +94,8 @@ nav {
 nav::after {
   content: "";
   position: absolute;
-  top: 10px;
-  bottom: 10px;
+  top: 8px;
+  bottom: 8px;
   left: max(
     calc(50% - var(--content-width) / 2 + var(--content-inset)),
     calc(40px + var(--logo-height) * 2 + 20px)
@@ -117,8 +136,8 @@ nav ul a,
 nav ul a:link,
 nav ul a:visited {
   display: block;
-  padding: 8px 16px;
-  border-radius: 10px;
+  padding: 5px 14px;
+  border-radius: 8px;
   color: var(--nav-text);
   font-weight: 600;
   transition: background-color 0.25s ease;   /* makinis na pagpalit ng kulay */
@@ -145,8 +164,8 @@ nav ul a:focus-visible {
   nav {
     grid-template-columns: 1fr;
     justify-items: center;
-    gap: 10px;
-    padding: 10px 16px;
+    gap: 6px;
+    padding: 6px 16px;
   }
   .logo {
     justify-self: center;

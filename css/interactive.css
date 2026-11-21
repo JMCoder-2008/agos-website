@@ -105,7 +105,9 @@ main {
   line-height: 1.4;
 }
 
-.loc-icon {
+/* Simpleng bullet (•) sa "What You Can Discover" */
+.loc-list li::before {
+  content: "•";
   flex: none;
   width: 22px;
   text-align: center;
@@ -469,15 +471,19 @@ button.quiz-back:focus-visible {
 
 #map-section,
 #quiz {
-  background-color: var(--deep-navy);
-  background-image: linear-gradient(90deg, var(--nav-bg-start, #123B5D), var(--nav-bg-end, #17577d));
+  /* Semi-transparent na navy: nakikita ang background pero malinaw pa rin ang puting text.
+     Ang laki ng transparency ay nasa --panel-alpha sa style.css */
+  background-color: transparent;
+  background-image: linear-gradient(90deg, var(--panel-bg-start), var(--panel-bg-end));
+  /* WALANG backdrop-filter (blur) dito: gumagalaw ang background (ulap at ulan) kaya kailangang i-blur ulit
+     ang buong panel sa bawat frame. Iyon ang sanhi ng lag kapag nag-scroll. Halos pareho pa rin ang itsura. */
   box-shadow: 0 6px 18px rgba(18, 59, 93, 0.25);
   color: #fff;
 }
 
 /* ---------- MAP SECTION ---------- */
 #map-section {
-  padding: 30px;
+  padding: 24px;
   border-radius: 24px;
 }
 
@@ -495,7 +501,7 @@ button.quiz-back:focus-visible {
 .location-card {
   border: 0;
   border-radius: 18px;
-  background-color: rgba(255, 255, 255, 0.92);
+  background-color: rgba(255, 255, 255, 0.60);   /* dati 0.92. Kita ang background; basa pa rin (contrast 6.5+) */
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
   color: #111;
 }
@@ -598,7 +604,7 @@ button.quiz-back:focus-visible {
   position: relative;
   width: 100%;
   max-width: none;                                  /* kasinglapad ng buong main, parang "AutoFit to Window" */
-  padding: 40px 48px calc(var(--quiz-wave-h) + 28px);
+  padding: 32px 40px calc(var(--quiz-wave-h) + 24px);
   overflow: hidden;                                 /* para sumunod ang waves sa bilog na gilid */
 }
 
@@ -701,8 +707,8 @@ button.quiz-back:focus-visible {
 
 
 /* =====================================================================
-   BACKGROUND NG INTERACTIVE PAGE: tuyo / drought
-   Ang animation (ulap na hinihipan ng hangin, alikabok, basag na lupa) ay galing sa js/dry-bg.js,
+   BACKGROUND NG INTERACTIVE PAGE: asul na langit na may ulap at ulan
+   Ang animation (gumagalaw na ulap, ulap na umuulan, tubig sa baba) ay galing sa js/sky-bg.js,
    isang canvas na naka-fixed sa likod ng page.
    Ang gradient sa ibaba ay fallback lang: lalabas habang naglo-load ang script,
    o kapag naka-off ang JavaScript.
@@ -713,5 +719,5 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, #f7ecd6 0%, #f2d59b 55%, #e4b46d 100%);
+  background: linear-gradient(180deg, #3a9fc4 0%, #6fc3dc 55%, #9bd9e8 100%);
 }

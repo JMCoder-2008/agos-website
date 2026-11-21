@@ -11,96 +11,96 @@
 :root {
 
   /* ================= NAVIGATION (pareho sa lahat ng page) ================= */
-  --size-nav: 20px;                                  /* Home, Learn, Interactive, About Us */
+  --size-nav: 16px;                                  /* Home, Learn, Interactive, About Us */
 
   /* ================= HOME PAGE (index.html) ================= */
-  --home-hero-title: clamp(50px, 4vw, 58px);         /* "Every Drop Matters." */
-  --home-hero-text: 22px;                            /* sa ilalim ng "Every Drop Matters." */
-  --home-hero-button: 18px;                          /* "Explore Now" */
-  --home-intro-title: 35px;                          /* "LEARN AND DISCOVER" */
-  --home-intro-text: 20px;                           /* paragraph sa ilalim ng "Learn and Discover" */
-  --home-video-title: 15px;                          /* title na nasa ibabaw ng YouTube thumbnail */
-  --home-card-title: 26px;                           /* pamagat ng 3 card (Pax Silica, El Niño, Water Resources) */
-  --home-card-text: 18px;                            /* description sa ilalim ng pamagat ng card */
+  --home-hero-title: clamp(42px, 3.4vw, 50px);         /* "Every Drop Matters." */
+  --home-hero-text: 19px;                            /* sa ilalim ng "Every Drop Matters." */
+  --home-hero-button: 16px;                          /* "Explore Now" */
+  --home-intro-title: 30px;                          /* "LEARN AND DISCOVER" */
+  --home-intro-text: 17px;                           /* paragraph sa ilalim ng "Learn and Discover" */
+  --home-video-title: 14px;                          /* title na nasa ibabaw ng YouTube thumbnail */
+  --home-card-title: 22px;                           /* pamagat ng 3 card (Pax Silica, El Niño, Water Resources) */
+  --home-card-text: 16px;                            /* description sa ilalim ng pamagat ng card */
 
   /* ================= LEARN PAGE (learn.html) ================= */
   /* Save Water, Save Life */
-  --learn-hero-title: clamp(50px, 4vw, 58px);        /* "Save Water, Save Life" */
-  --learn-hero-text: clamp(22px, 2vw, 26px);         /* "Small actions today can protect..." */
-  --learn-tip-title: 20px;                           /* "Turn off the tap", "Fix leaks", atbp. */
-  --learn-tip-text: 18px;                            /* description sa ilalim ng tip title */
+  --learn-hero-title: clamp(42px, 3.4vw, 50px);        /* "Save Water, Save Life" */
+  --learn-hero-text: clamp(19px, 1.7vw, 22px);         /* "Small actions today can protect..." */
+  --learn-tip-title: 18px;                           /* "Turn off the tap", "Fix leaks", atbp. */
+  --learn-tip-text: 16px;                            /* description sa ilalim ng tip title */
 
   /* Environmental Data Dashboard */
-  --learn-data-title: clamp(32px, 3vw, 36px);        /* "Environmental Data Dashboard" */
-  --learn-sample-note: 22px;                         /* "Sample data" / "Description" sa ilalim ng dashboard title */
+  --learn-data-title: clamp(28px, 2.6vw, 32px);        /* "Environmental Data Dashboard" */
+  --learn-sample-note: 18px;                         /* "Sample data" / "Description" sa ilalim ng dashboard title */
 
-  /* 4 na stat card (Temperature, Total, Average, Score) */
-  --learn-stat-label: 18px;                          /* "TEMPERATURE", "TOTAL", "AVERAGE", "SCORE" */
-  --learn-stat-value: 48px;                          /* ang malaking numero (24.3, 8.2, 8.05, 68) */
-  --learn-stat-caption: 18px;                        /* "avg surface temp", "estimated total", at iba pa */
-  --learn-stat-tag: 16px;                            /* "SAMPLE DATA" sa loob ng stat card */
+  /* 4 na stat card (Water Stress, Freshwater Withdrawals, At Least Basic, Safely Managed) */
+  --learn-stat-label: 16px;                          /* "WATER STRESS", "FRESHWATER WITHDRAWALS", atbp. */
+  --learn-stat-value: 42px;                          /* ang malaking numero (31.1%, 101.61, 97.5%, 53.1%) */
+  --learn-stat-caption: 16px;                        /* "Philippines, 2025", "Billion m³, 2025", at iba pa */
+  --learn-stat-tag: 14px;                            /* "SAMPLE DATA" sa loob ng stat card */
 
-  /* 3 chart card (El Niño, Pax Silica, Water Resources) */
-  --learn-chart-title: 24px;                         /* "EL NIÑO", "PAX SILICA", "WATER RESOURCES" */
-  --learn-chart-tag: 18px;                           /* "description" sa loob ng chart card */
-  --learn-chart-source: 20px;                        /* "Source: ..." sa ilalim ng chart (kung may laman) */
+  /* 4 chart card (El Niño, Pax Silica, Water Resources, Water Stress) */
+  --learn-chart-title: 21px;                         /* pamagat ng bawat chart card */
+  --learn-chart-tag: 16px;                           /* "description" sa loob ng chart card */
+  --learn-chart-source: 17px;                        /* "Source: ..." sa ilalim ng chart (kung may laman) */
 
   /* Our References */
-  --learn-ref-title: clamp(32px, 3vw, 36px);         /* "Our References" */
-  --learn-ref-card-title: clamp(22px, 2vw, 26px);    /* "Trusted Sources", "Data", "Links" */
-  --learn-ref-list: 15px;                            /* mga nakalista sa loob ng reference card */
+  --learn-ref-title: clamp(28px, 2.6vw, 32px);         /* "Our References" */
+  --learn-ref-card-title: clamp(19px, 1.7vw, 22px);    /* "Trusted Sources", "Data", "Links" */
+  --learn-ref-list: 14px;                            /* mga nakalista sa loob ng reference card */
 
   /* ================= INTERACTIVE PAGE (interactive.html) ================= */
   /* Mapa at location card */
-  --int-title: 36px;                                 /* "Explore the Philippines" */
-  --int-subtitle: 18px;                              /* "Select a province on the map..." */
-  --int-loc-kicker: 15px;                            /* "Drought Monitoring in the Philippines" */
-  --int-loc-heading: 17px;                           /* "Understanding Drought Conditions", "What You Can Discover:", atbp. */
+  --int-title: 32px;                                 /* "Explore the Philippines" */
+  --int-subtitle: 16px;                              /* "Select a province on the map..." */
+  --int-loc-kicker: 14px;                            /* "Drought Monitoring in the Philippines" */
+  --int-loc-heading: 16px;                           /* "Understanding Drought Conditions", "What You Can Discover:", atbp. */
   --int-loc-text: 14px;                              /* paragraph at listahan sa location card */
   --int-loc-note: 13px;                              /* "PAGASA uses the following categories:", "Source: ..." */
   --int-loc-badge: 12px;                             /* "October 2026 Assessment" */
-  --int-loc-stat-number: 24px;                       /* 5, 11, 10 */
+  --int-loc-stat-number: 22px;                       /* 5, 11, 10 */
   --int-loc-stat-label: 12px;                        /* "Drought provinces", "Dry spell provinces", atbp. */
   --int-loc-tag: 11px;                               /* PAGASA tag (yung link) */
 
   /* Quiz */
-  --int-quiz-title: clamp(40px, 5vw, 60px);          /* "Knowledge Check" / "Think Wise" */
-  --int-quiz-progress: 14px;                         /* "Question 1 of 10" */
-  --int-quiz-question: 20px;                         /* ang tanong */
-  --int-quiz-choice: 16px;                           /* A, B, C, D na sagot */
-  --int-quiz-feedback: 17px;                         /* explanation sa kanan */
-  --int-quiz-button: 16px;                           /* Next, Back, Try Again */
-  --int-quiz-score-label: 14px;                      /* "YOUR SCORE" (final result) */
-  --int-quiz-score-number: 56px;                     /* malaking score (final result) */
-  --int-quiz-score-percent: 20px;                    /* percent (final result) */
-  --int-quiz-stat-number: 32px;                      /* bilang ng tama/mali (final result) */
-  --int-quiz-stat-label: 14px;                       /* "Correct", "Wrong" (final result) */
+  --int-quiz-title: clamp(34px, 4.2vw, 50px);          /* "Knowledge Check" / "Think Wise" */
+  --int-quiz-progress: 13px;                         /* "Question 1 of 10" */
+  --int-quiz-question: 18px;                         /* ang tanong */
+  --int-quiz-choice: 15px;                           /* A, B, C, D na sagot */
+  --int-quiz-feedback: 15px;                         /* explanation sa kanan */
+  --int-quiz-button: 15px;                           /* Next, Back, Try Again */
+  --int-quiz-score-label: 13px;                      /* "YOUR SCORE" (final result) */
+  --int-quiz-score-number: 48px;                     /* malaking score (final result) */
+  --int-quiz-score-percent: 18px;                    /* percent (final result) */
+  --int-quiz-stat-number: 28px;                      /* bilang ng tama/mali (final result) */
+  --int-quiz-stat-label: 13px;                       /* "Correct", "Wrong" (final result) */
 
   /* ================= ABOUT PAGE (about.html) ================= */
-  --about-purpose-title: 36px;                       /* "Purpose" */
-  --about-purpose-text: 18px;                        /* 3 paragraph ng Purpose */
-  --about-photo-text: 18px;                          /* text sa group photo placeholder */
-  --about-members-title: clamp(32px, 3vw, 36px);     /* "Project Members" */
-  --about-member-name: 18px;                         /* pangalan ng member (yung pinipindot/ho-hover) */
-  --about-member-role: 17px;                         /* role sa loob ng member card (Group Leader, atbp.) */
-  --about-member-text: 17px;                         /* description sa loob ng member card */
+  --about-purpose-title: 32px;                       /* "Purpose" */
+  --about-purpose-text: 16px;                        /* 3 paragraph ng Purpose */
+  --about-photo-text: 16px;                          /* text sa group photo placeholder */
+  --about-members-title: clamp(28px, 2.6vw, 32px);     /* "Project Members" */
+  --about-member-name: 16px;                         /* pangalan ng member (yung pinipindot/ho-hover) */
+  --about-member-role: 15px;                         /* role sa loob ng member card (Group Leader, atbp.) */
+  --about-member-text: 15px;                         /* description sa loob ng member card */
 
   /* ================= FOOTER (pareho sa lahat ng page) ================= */
-  --size-footer-title: 24px;                         /* "Contact Us" */
-  --size-footer-text: 17px;                          /* email, number, social links, at copyright */
+  --size-footer-title: 21px;                         /* "Contact Us" */
+  --size-footer-text: 15px;                          /* email, number, social links, at copyright */
 }
 
 /* Mga maliliit na screen: ito ang mas maliit na laki ng quiz sa phone (600px pababa) */
 @media (max-width: 600px) {
   :root {
-    --int-quiz-question: 18px;
-    --int-quiz-score-number: 44px;
+    --int-quiz-question: 17px;
+    --int-quiz-score-number: 40px;
   }
 } 
 
 /* Panimulang laki ng buong website (para sa mga text na walang sariling setting) */
 body {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 /* ================= NAVIGATION ================= */
@@ -135,6 +135,10 @@ body #data .stat-card .sample-tag { font-size: var(--learn-stat-tag); }
 body #data .chart-card h3 { font-size: var(--learn-chart-title); }
 body #data .chart-card .sample-tag { font-size: var(--learn-chart-tag); }
 body #data .chart-source { font-size: var(--learn-chart-source); }
+body #data .stat-note    { font-size: var(--learn-sample-note); }
+body #data .pax-value    { font-size: var(--learn-stat-value); }
+body #data .pax-unit     { font-size: var(--learn-stat-label); }
+body #data .pax-caption  { font-size: var(--learn-stat-caption); }
 
 body #references h2      { font-size: var(--learn-ref-title); }
 body #references .ref-card h3 { font-size: var(--learn-ref-card-title); }

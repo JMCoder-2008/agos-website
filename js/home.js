@@ -4,7 +4,7 @@
 (function () {
   const COLUMN_DELAY = 0.15;   //delay of every column (0.15s, 0.30s)
   const CARD_DELAY   = 0.3;    // delay for cards
-  const PANEL_WAIT   = 350;    // panel(navy blue bg) first and how much delay before the video and card show up
+  const PANEL_WAIT   = 250;    // panel(navy blue bg) first and how much delay before the video and card show up
 
   const panel = document.getElementById("intro");
   const items = document.querySelectorAll(".topics-grid .video-frame, .topics-grid .card");

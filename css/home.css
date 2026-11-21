@@ -6,7 +6,7 @@
 :root {
   --home-bg-color: #dff3f9;   /* kulay habang wala pa / bago ma-load ang background */
   --card-bg: #f3fafc;         /* background ng mga card: hindi purong puti para hindi masakit sa mata */
-  --card-title: #0f9aaf;      /* teal na kulay ng pamagat ng card (galing sa design) */
+  --card-title: #0b7d8e;      /* teal na kulay ng pamagat ng card: bahagyang pinadilim (dati #0f9aaf) para mabasa pa rin sa semi-transparent na card */
 }
 
 body::before {
@@ -27,8 +27,8 @@ main {
 #hero {
   /* Sakop ang buong screen (minus ang navbar at padding ng main), kaya sa unang bukas
      ay hindi pa makikita ang intro at mga video. Dito ilalagay ang design/background ng hero. */
-  min-height: calc(100vh - 98px - 20px);   /* 98px = taas ng navbar, 20px = padding ng main */
-  min-height: calc(100svh - 98px - 20px);
+  min-height: calc(100vh - 58px - 20px);   /* 58px = taas ng navbar, 20px = padding ng main */
+  min-height: calc(100svh - 58px - 20px);
   box-sizing: border-box;
   padding: 30px 20px;
   display: flex;
@@ -111,10 +111,13 @@ html {
 
 /* INTRO: navy panel (kulay ng navbar) na may puting heading at paragraph sa taas ng tatlong video */
 #intro {
-  padding: 30px;
+  padding: 24px;
   border-radius: 24px;
-  background-color: var(--deep-navy);
-  background-image: linear-gradient(90deg, var(--nav-bg-start, #123B5D), var(--nav-bg-end, #17577d));
+  /* Semi-transparent na navy: nakikita ang background pero malinaw pa rin ang puting text.
+     Ang laki ng transparency ay nasa --panel-alpha sa style.css */
+  background-color: transparent;
+  background-image: linear-gradient(90deg, var(--panel-bg-start), var(--panel-bg-end));
+  /* WALANG backdrop-filter (blur): pareho na ng Learn, Interactive, at About para consistent ang itsura at magaan ang pag-scroll */
   box-shadow: 0 6px 18px rgba(18, 59, 93, 0.25);
 }
 
@@ -167,7 +170,7 @@ html {
   padding: 16px;
   border: 0;
   border-radius: 24px;
-  background-color: var(--card-bg);
+  background-color: rgba(243, 250, 252, 0.75);   /* dati solid (--card-bg). Semi-transparent para kita ang background; huwag bababa sa ~0.70. Hindi ginalaw ang --card-bg kasi ginagamit din ng footer */
   box-shadow: 0 8px 24px rgba(18, 59, 93, 0.12);
   color: var(--deep-navy);
   text-decoration: none;

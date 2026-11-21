@@ -13,42 +13,69 @@ document.querySelectorAll("nav ul a").forEach(function (link) {
 //   title: lumalabas na pangalan | page: file | anchor: id ng section (pwedeng walang laman)
 //   where: lumalabas sa ilalim ng title | keywords: ibang salita na dapat makahanap dito
 const searchIndex = [
-  // Mga page
-  { title: "Home",        page: "index.html",       anchor: "",           where: "Page",  keywords: "main homepage every drop matters" },
-  { title: "Learn",       page: "learn.html",       anchor: "",           where: "Page",  keywords: "articles tips data" },
-  { title: "Interactive", page: "interactive.html", anchor: "",           where: "Page",  keywords: "map quiz" },
-  { title: "About Us",    page: "about.html",       anchor: "",           where: "Page",  keywords: "team group purpose" },
+  // ===== Mga page =====
+  { title: "Home",        page: "index.html",       anchor: "",           where: "Page", keywords: "main homepage" },
+  { title: "Learn",       page: "learn.html",       anchor: "",           where: "Page", keywords: "articles tips data dashboard references" },
+  { title: "Interactive", page: "interactive.html", anchor: "",           where: "Page", keywords: "map quiz drought" },
+  { title: "About Us",    page: "about.html",       anchor: "",           where: "Page", keywords: "team group purpose members" },
 
-  // Home
-  { title: "Every Drop Matters", page: "index.html", anchor: "hero",  where: "Home", keywords: "discover water resources explore now" },
-  { title: "Pax Silica",         page: "index.html", anchor: "intro", where: "Home", keywords: "ai semiconductor technology supply chain video" },
-  { title: "El Niño",            page: "index.html", anchor: "intro", where: "Home", keywords: "el nino weather drought hot rainfall video" },
-  { title: "Water Resources",    page: "index.html", anchor: "intro", where: "Home", keywords: "rivers lakes groundwater oceans video" },
+  // ===== HOME =====
+  { title: "Every Drop Matters",   page: "index.html", anchor: "hero",  where: "Home", keywords: "discover water resources understand environmental challenges protect future explore now" },
+  { title: "Learn and Discover",   page: "index.html", anchor: "intro", where: "Home", keywords: "introduction videos topics conserve water home" },
+  { title: "Pax Silica",           page: "index.html", anchor: "intro", where: "Home", keywords: "international initiative cooperation security supply chain semiconductors advanced technology ai hub economy video" },
+  { title: "El Niño",              page: "index.html", anchor: "intro", where: "Home", keywords: "el nino weather phenomenon hot temperatures less rainfall drought water shortages video" },
+  { title: "Water Resources",      page: "index.html", anchor: "intro", where: "Home", keywords: "rivers lakes groundwater oceans drinking farming daily activities video" },
+  { title: "Why Every Drop Counts: Easy Ways to Save Water Today!", page: "index.html", anchor: "intro", where: "Home > Video", keywords: "youtube conserve save water tips" },
 
-  // Learn
-  { title: "Save Water, Save Life",         page: "learn.html", anchor: "conservation", where: "Learn", keywords: "conservation tips" },
-  { title: "Turn off the tap",              page: "learn.html", anchor: "conservation", where: "Learn > Save Water, Save Life", keywords: "faucet" },
-  { title: "Fix leaks",                     page: "learn.html", anchor: "conservation", where: "Learn > Save Water, Save Life", keywords: "repair leak" },
-  { title: "Reuse water",                   page: "learn.html", anchor: "conservation", where: "Learn > Save Water, Save Life", keywords: "gardening cleaning recycle" },
-  { title: "Choose eco-friendly products",  page: "learn.html", anchor: "conservation", where: "Learn > Save Water, Save Life", keywords: "environment" },
-  { title: "Environmental Data Dashboard",  page: "learn.html", anchor: "data",         where: "Learn", keywords: "charts graph statistics temperature" },
-  { title: "Our References",                page: "learn.html", anchor: "references",   where: "Learn", keywords: "sources links trusted" },
+  // ===== LEARN: Save Water, Save Life =====
+  { title: "Save Water, Save Life",        page: "learn.html", anchor: "conservation", where: "Learn", keywords: "conservation tips small actions today protect future simple choices lasting impact" },
+  { title: "Turn off the tap",             page: "learn.html", anchor: "conservation", where: "Learn > Save Water, Save Life", keywords: "faucet shut off not in use save clean water" },
+  { title: "Fix leaks",                    page: "learn.html", anchor: "conservation", where: "Learn > Save Water, Save Life", keywords: "repair leak prevent water waste home" },
+  { title: "Reuse water",                  page: "learn.html", anchor: "conservation", where: "Learn > Save Water, Save Life", keywords: "collect cleaning gardening recycle" },
+  { title: "Choose eco-friendly products", page: "learn.html", anchor: "conservation", where: "Learn > Save Water, Save Life", keywords: "gentle on water environment" },
 
-  // Interactive
-  { title: "Explore the Philippines", page: "interactive.html", anchor: "map-section", where: "Interactive", keywords: "map province drought pagasa" },
-  { title: "Think Wise",              page: "interactive.html", anchor: "quiz",        where: "Interactive", keywords: "quiz questions test" },
+  // ===== LEARN: Environmental Data Dashboard =====
+  { title: "Environmental Data Dashboard", page: "learn.html", anchor: "data", where: "Learn", keywords: "charts graphs statistics numbers figures" },
+  { title: "Water Stress (31.1%)",         page: "learn.html", anchor: "data", where: "Learn > Dashboard", keywords: "philippines 2025 percent" },
+  { title: "Freshwater Withdrawals",       page: "learn.html", anchor: "data", where: "Learn > Dashboard", keywords: "101.61 billion cubic meters 2025" },
+  { title: "At Least Basic Drinking Water",page: "learn.html", anchor: "data", where: "Learn > Dashboard", keywords: "97.5 families 2024 access" },
+  { title: "Safely Managed Drinking Water",page: "learn.html", anchor: "data", where: "Learn > Dashboard", keywords: "53.1 families 2024 access" },
+  { title: "El Niño and Dry Conditions in the Philippines", page: "learn.html", anchor: "title-el-nino", where: "Learn > Dashboard > Chart", keywords: "bar chart drought dry spell provinces october 2026 pagasa" },
+  { title: "Pax Silica: Proposed Water Demand",             page: "learn.html", anchor: "title-pax-silica", where: "Learn > Dashboard", keywords: "bcda million liters per day surface-water harvesting 65 90 120" },
+  { title: "Water Allocation by Use, 2025",                 page: "learn.html", anchor: "title-water", where: "Learn > Dashboard > Chart", keywords: "donut chart power generation irrigation industrial use percent" },
+  { title: "Philippine Water Stress Level (2016\u20132025)", page: "learn.html", anchor: "title-water-stress", where: "Learn > Dashboard > Chart", keywords: "line chart 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 psa water accounts" },
 
-  // About Us
-  { title: "Purpose",          page: "about.html", anchor: "purpose", where: "About Us", keywords: "goal mission" },
-  { title: "Project Members",  page: "about.html", anchor: "members", where: "About Us", keywords: "team group" },
-  { title: "Lance Jay Aguilera",       page: "about.html", anchor: "members", where: "About Us > Group Leader / Project Coordinator", keywords: "aguilera" },
-  { title: "Princess Nadine Atienza",  page: "about.html", anchor: "members", where: "About Us > UI/UX Designer / Content Developer", keywords: "atienza" },
-  { title: "Jemil Devota",             page: "about.html", anchor: "members", where: "About Us > System Developer / Programmer", keywords: "devota" },
-  { title: "Jayvee Gatinao",           page: "about.html", anchor: "members", where: "About Us > Documentation and Testing", keywords: "gatinao" },
-  { title: "Loren Kempis",             page: "about.html", anchor: "members", where: "About Us > Presentation and Documentation", keywords: "kempis" },
-  { title: "Lyka Jane Linatoc",        page: "about.html", anchor: "members", where: "About Us > UI/UX Designer / Content Developer", keywords: "linatoc" },
-  { title: "Jhon Ashley Manese",       page: "about.html", anchor: "members", where: "About Us > Presentation and Documentation", keywords: "manese" },
-  { title: "Gian Carlo Sagales",       page: "about.html", anchor: "members", where: "About Us > Documentation and Testing", keywords: "sagales" }
+  // ===== LEARN: Our References =====
+  { title: "Our References",        page: "learn.html", anchor: "references", where: "Learn", keywords: "sources links trusted data citations" },
+  { title: "DOST-PAGASA, PH Meteorological Drought Monitor", page: "learn.html", anchor: "references", where: "Learn > References > Trusted Sources", keywords: "drought caster" },
+  { title: "Philippine Water Statistics",       page: "learn.html", anchor: "references", where: "Learn > References > Data", keywords: "psa water stress freshwater withdrawals" },
+  { title: "Drinking Water Access",             page: "learn.html", anchor: "references", where: "Learn > References > Data", keywords: "psa basic safely managed apis 2024" },
+  { title: "Water Allocation by Use (PSA)",     page: "learn.html", anchor: "references", where: "Learn > References > Data", keywords: "psa volume allocated water power generation irrigation industrial" },
+  { title: "El Niño and Dry Conditions (PAGASA press release)", page: "learn.html", anchor: "references", where: "Learn > References > Data", keywords: "pagasa drought dry spell provinces" },
+  { title: "Pax Silica: Proposed Water Demand (PCO news)",      page: "learn.html", anchor: "references", where: "Learn > References > Data", keywords: "bcda jobs million liters" },
+  { title: "YouTube videos",                    page: "learn.html", anchor: "references", where: "Learn > References > Links", keywords: "pax silica el nino why every drop counts" },
+
+  // ===== INTERACTIVE =====
+  { title: "Explore the Philippines",        page: "interactive.html", anchor: "map-section", where: "Interactive", keywords: "map province drought assessment outlook pagasa drought caster" },
+  { title: "Drought Monitoring in the Philippines", page: "interactive.html", anchor: "map-section", where: "Interactive > Map", keywords: "pagasa drought caster" },
+  { title: "Understanding Drought Conditions", page: "interactive.html", anchor: "map-section", where: "Interactive > Map", keywords: "observed drought assessments outlook rainfall" },
+  { title: "What You Can Discover",          page: "interactive.html", anchor: "map-section", where: "Interactive > Map", keywords: "drought-affected provinces forecasts outlooks classification levels" },
+  { title: "Drought Classification",         page: "interactive.html", anchor: "map-section", where: "Interactive > Map", keywords: "not affected dry condition dry spell drought no data categories" },
+  { title: "Latest reported drought assessment", page: "interactive.html", anchor: "map-section", where: "Interactive > Map", keywords: "october 2026 5 drought 11 dry spell 10 dry condition provinces" },
+  { title: "Think Wise",                     page: "interactive.html", anchor: "quiz", where: "Interactive", keywords: "quiz questions test knowledge check score" },
+
+  // ===== ABOUT US =====
+  { title: "Purpose",         page: "about.html", anchor: "purpose",  where: "About Us", keywords: "goal mission inform educate water resources environmental issues" },
+  { title: "Group Photo",     page: "about.html", anchor: "picture",  where: "About Us", keywords: "picture project members" },
+  { title: "Project Members", page: "about.html", anchor: "members",  where: "About Us", keywords: "team group roles" },
+  { title: "Lance Jay Aguilera",      page: "about.html", anchor: "members", where: "About Us > Group Leader / Project Coordinator", keywords: "aguilera lance" },
+  { title: "Princess Nadine Atienza", page: "about.html", anchor: "members", where: "About Us > UI/UX Designer / Content Developer", keywords: "atienza nadine" },
+  { title: "Jemil Devota",            page: "about.html", anchor: "members", where: "About Us > System Developer / Programmer", keywords: "devota" },
+  { title: "Jayvee Gatinao",          page: "about.html", anchor: "members", where: "About Us > Documentation and Testing", keywords: "gatinao" },
+  { title: "Loren Kempis",            page: "about.html", anchor: "members", where: "About Us > Presentation and Documentation", keywords: "kempis" },
+  { title: "Lyka Jane Linatoc",       page: "about.html", anchor: "members", where: "About Us > UI/UX Designer / Content Developer", keywords: "linatoc lyka" },
+  { title: "Jhon Ashley Manese",      page: "about.html", anchor: "members", where: "About Us > Presentation and Documentation", keywords: "manese ashley" },
+  { title: "Gian Carlo Sagales",      page: "about.html", anchor: "members", where: "About Us > Documentation and Testing", keywords: "sagales gian" }
 ];
 
 (function () {
@@ -169,6 +196,15 @@ const searchIndex = [
 (function () {
   const header = document.querySelector("header");
   if (!header) return;
+
+  // Sukatin ang taas ng navbar para tama ang espasyo sa ilalim nito (fixed ang navbar kaya wala na ito sa daloy ng page)
+  function measureHeader() {
+    document.documentElement.style.setProperty("--header-h", header.offsetHeight + "px");
+  }
+  measureHeader();
+  window.addEventListener("resize", measureHeader);
+  window.addEventListener("load", measureHeader);
+  if (window.ResizeObserver) new ResizeObserver(measureHeader).observe(header);
 
   const HIDE_DELAY = 1000;   // ms bago magtago (1 segundo)
   const TOP_ZONE = 60;       // px mula sa taas: kapag nandito ang mouse, lalabas ang navbar

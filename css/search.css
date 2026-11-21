@@ -2,9 +2,9 @@
    Laging nakikita. Kapag na-hover o na-click: lumalaki nang kaunti, pumuputi, at may kulay ang gilid. */
 
 :root {
-  --search-width: 240px;         /* lapad ng search box */
-  --search-width-active: 300px;  /* lapad kapag na-hover o na-click */
-  --search-height: 44px;         /* taas ng search box */
+  --search-width: 210px;         /* lapad ng search box */
+  --search-width-active: 260px;  /* lapad kapag na-hover o na-click */
+  --search-height: 34px;         /* taas ng search box */
   --search-bg: #e3e9ef;          /* kulay ng box (parang gray ng Win 11) */
 }
 
@@ -22,10 +22,10 @@
   right: 0;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   width: var(--search-width);
   height: var(--search-height);
-  padding: 0 16px;
+  padding: 0 14px;
   box-sizing: border-box;
   background: var(--search-bg);
     b  border: 2px solid #c3ccd6;                         /* manipis na gilid para litaw sa puti */
@@ -55,8 +55,8 @@
 
 .search-icon {
   flex: 0 0 auto;
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 17px;
   color: #555;
   transition: color 0.3s ease;
 }
@@ -74,7 +74,7 @@
   border: 0;
   background: transparent;
   font: inherit;
-  font-size: 16px;
+  font-size: 14px;
   color: black;
 }
 

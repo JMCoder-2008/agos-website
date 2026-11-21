@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Learn | AGOS</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/footer.css">
   <link rel="stylesheet" href="css/learn.css">
@@ -64,32 +65,34 @@
          Ang mga numero ay galing sa js/data.js. Doon mo lang papalitan ang data. -->
     <section id="data">
       <h2>Environmental Data Dashboard</h2>
-      <p class="sample-note">Sample data</p>
 
       <!-- Apat na stat card: ginagawa ng js/learn.js galing sa data.js -->
       <div id="stat-cards" class="stat-grid"></div>
+      <p class="stat-note" id="stat-note"></p>
 
-      <!-- Tatlong chart -->
+      <!-- Apat na card: El Niño (bar), Pax Silica (stat cards), Water Resources (donut), Water Stress (line) -->
       <div class="chart-grid">
         <article class="chart-card">
-          <h3>El Niño</h3>
-          <p class="sample-tag">(SAMPLE DATA)</p>
+          <h3 id="title-el-nino">El Niño</h3>
           <div class="chart-box"><canvas id="chart-el-nino"></canvas></div>
           <p class="chart-source" id="source-el-nino"></p>
         </article>
 
         <article class="chart-card">
-          <h3>Pax Silica</h3>
-          <p class="sample-tag">(SAMPLE DATA)</p>
-          <div class="chart-box"><canvas id="chart-pax-silica"></canvas></div>
-          <p class="chart-source" id="source-pax-silica"></p>
+          <h3 id="title-pax-silica">Pax Silica</h3>
+          <div class="pax-grid" id="pax-cards"></div>
         </article>
 
         <article class="chart-card">
-          <h3>Water Resources</h3>
-          <p class="sample-tag">(SAMPLE DATA)</p>
+          <h3 id="title-water">Water Resources</h3>
           <div class="chart-box"><canvas id="chart-water"></canvas></div>
           <p class="chart-source" id="source-water"></p>
+        </article>
+
+        <article class="chart-card">
+          <h3 id="title-water-stress">Water Stress</h3>
+          <div class="chart-box"><canvas id="chart-water-stress"></canvas></div>
+          <p class="chart-source" id="source-water-stress"></p>
         </article>
       </div>
     </section>
@@ -116,11 +119,11 @@
           <h3>Data</h3>
           <!-- TODO: ilagay ang mga source dito kapag naibigay na ng group (isang <li> bawat source) -->
           <ul class="ref-list">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li><a href="https://psa.gov.ph/content/countrys-water-use-efficiency-declined-php-22148-cubic-meter-2025" target="_blank" rel="noopener">Philippine Water Statistics 🔗</a><span class="ref-desc">Supports 31.1% water stress, 101.61 billion m³ freshwater withdrawals, and the 2016–2025 graph. Released September 3, 2026.</span></li>
+            <li><a href="https://psa.gov.ph/content/access-basic-drinking-water-service-among-families-improved-2024" target="_blank" rel="noopener">Drinking Water Access 🔗</a><span class="ref-desc">Supports 97.5% at least basic access and 53.1% safely managed access. Based on 2024 APIS.</span></li>
+            <li><a href="https://psa.gov.ph/content/total-volume-allocated-water-increased-24691-billion-cubic-meters-2025" target="_blank" rel="noopener">Water Allocation by Use 🔗</a><span class="ref-desc">Supports 58.9% power generation, 26.9% irrigation, and 10.0% industrial use. The 4.2% is the remaining share calculated from 100%.</span></li>
+            <li><a href="https://pagasa.dost.gov.ph/press-release/233" target="_blank" rel="noopener">El Niño and Dry Conditions 🔗</a><span class="ref-desc">Supports 5 provinces in drought, 11 under dry spell, and 10 with dry conditions in October 2026. Published November 4, 2026.</span></li>
+            <li><a href="https://pco.gov.ph/news_releases/bcda-says-pax-silica-project-could-generate-over-130000-high-quality-jobs/" target="_blank" rel="noopener">Pax Silica: Proposed Water Demand 🔗</a><span class="ref-desc">Supports the BCDA estimates of 65–90 million liters per day and the proposed 120-million-liter-per-day surface-water harvesting system. Published July 23, 2026.</span></li>
             <li></li>
           </ul>
         </article>
