@@ -409,3 +409,33 @@ hr {
     padding: 20px;
   }
 }
+
+
+/* =====================================================================
+   FIRST SCREEN NG LEARN PAGE
+   - Ang Save Water, Save Life ay laging nasa KALIWA-GITNA ng unang screen (kaliwa; gitna pababa), kahit anong laki ng screen.
+   - Ang Environmental Data Dashboard ay nasa ILALIM ng unang screen, kaya hindi ito kita hanggang mag-scroll.
+   Paano: ang .hero (sa learn.html) ay kasing-taas ng natitirang screen sa ilalim ng navbar, at ginagawang
+   gitna (pababa) ang panel sa loob nito. Kapag mas mataas pa ang panel kaysa sa screen (maliit na phone), tumataas ang
+   .hero kasama nito, kaya nasa ilalim pa rin ng panel ang dashboard.
+   ===================================================================== */
+
+:root {
+  --learn-header-h: 70px;   /* taas ng navbar + kaunting luwag. Palitan lang kung magbago ang taas ng navbar */
+}
+
+.hero {
+  display: flex;
+  align-items: center;            /* gitna pababa */
+  justify-content: flex-start;    /* kaliwa */
+  /* 100vh - navbar - 20px (padding-top ng main) = eksaktong natitirang screen. Ang 40px na margin-top ng #data
+     sa ibaba ay dagdag na luwag para hindi talaga sumilip ang dashboard */
+  min-height: calc(100vh - var(--learn-header-h) - 20px);
+}
+
+@supports (height: 100svh) {
+  .hero {
+    /* svh = ang kita talaga sa phone (kasama ang url bar), para hindi sumilip ang dashboard */
+    min-height: calc(100svh - var(--learn-header-h) - 20px);
+  }
+}
