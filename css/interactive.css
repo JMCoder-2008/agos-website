@@ -13,11 +13,21 @@ main {
   align-items: flex-start;
 }
 
-#ph-map {
+/* Wrapper ng mapa: dito na ang laki (dating nasa #ph-map). Tingnan ang "MAP SHIELD" sa dulo ng file */
+.map-wrap {
+  position: relative;
   flex: 3;
   min-width: 0;
-  height: 90vh;
+  height: 90vh;        /* orihinal na laki */
   min-height: 700px;
+  border-radius: 18px;
+  background: #e6eef3;   /* kulay habang naglo-load */
+}
+
+#ph-map {
+  display: block;
+  width: 100%;
+  height: 100%;
   border: 0;
   border-radius: 24px;
 }
@@ -26,7 +36,7 @@ main {
 .location-card {
   flex: 1;
   min-width: 0;
-  height: max(90vh, 700px);   /* kapareho ng taas ng mapa (#ph-map) */
+  height: max(90vh, 700px);   /* kapareho ng taas ng mapa (.map-wrap) */
   display: flex;
   flex-direction: column;
   border: 1px solid;
@@ -719,5 +729,95 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, #3a9fc4 0%, #6fc3dc 55%, #9bd9e8 100%);
+  /* Ang langit: dati iginuguhit ng canvas kada frame (mabigat). Ngayon dito na, isang beses lang kinukulayan ng browser.
+     Itaas: malambot na liwanag sa kaliwa. Ibaba: ang asul na gradient (kapareho ng dati). */
+  background:
+    radial-gradient(circle 65vmax at 18% 4%, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.12) 50%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(180deg, #3a9fc4 0%, #6fc3dc 55%, #9bd9e8 100%);
+}
+
+/* =====================================================================
+   MAP FREEZE: larawan muna, buhay na mapa kapag na-click
+   Ang mapa ay hiwalay na website (PAGASA) sa loob ng iframe, at mabigat itong i-scroll kahit walang gumagalaw.
+   Kaya larawan ng mapa (images/interactive/map-preview.jpg) ang nakikita habang nag-i-scroll. Naglo-load ang totoong mapa
+   sa likod (nakatago), at kapag na-click ang larawan, lalabas ito at gagana nang normal. Babalik ang larawan kapag
+   nag-click sa labas ng mapa o nag-scroll ng page (nananatili ang zoom/napiling probinsya sa mapa).
+   Ang mga klase ay inilalagay ng js/map-freeze.js: .is-armed = gumagana ang freeze, .is-frozen = larawan ang nakikita.
+   ===================================================================== */
+.map-preview,
+.map-activate {
+  display: none;
+}
+
+.map-wrap.is-armed .map-preview,
+.map-wrap.is-armed .map-activate {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+}
+
+.map-wrap.is-armed .map-preview {
+  z-index: 1;
+  object-fit: cover;
+  object-position: 50% 0;     /* nakahanay sa itaas at gitna, para tumama ang header ng mapa */
+  pointer-events: none;
+}
+
+/* Button na sumasakop sa buong mapa; nasa ibaba ang label */
+.map-wrap.is-armed .map-activate {
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 0 18px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.map-activate span {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(8, 32, 62, 0.85);
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.map-activate:hover span,
+.map-activate:focus-visible span {
+  background: var(--ocean-blue);
+}
+
+.map-activate:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -4px;
+}
+
+/* FROZEN: nakatago ang iframe (nakaka-load pa rin, pero hindi na ito iginuguhit habang nag-i-scroll) */
+.map-wrap.is-armed.is-frozen #ph-map {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* LIVE: nawawala ang larawan at button (dahan-dahan), buhay na mapa na ang kita */
+.map-wrap.is-armed:not(.is-frozen) .map-preview,
+.map-wrap.is-armed:not(.is-frozen) .map-activate {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-wrap.is-armed:not(.is-frozen) .map-preview,
+  .map-wrap.is-armed:not(.is-frozen) .map-activate,
+  .map-activate span {
+    transition: none;
+  }
 }

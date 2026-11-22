@@ -321,12 +321,11 @@ hr {
   /* WALANG backdrop-filter (blur): nakaka-lag sa pag-scroll lalo na kapag nakapatong sa isa pang blur na panel */
 }
 
-/* Footer: frosted white. Ang malaking margin sa ilalim ay para makita ang waves */
+/* Footer: kapareho ng ibang page (semi-transparent, 0.65). Walang malaking margin sa ilalim dahil wala na ang waves */
 footer {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(243, 250, 252, 0.65);   /* huwag bababa sa ~0.60 */
   border: none;
-  box-shadow: 0 6px 18px rgba(18, 59, 93, 0.18);
-  margin-bottom: 150px;
+  box-shadow: 0 8px 24px rgba(18, 59, 93, 0.12);
 }
 
 /* Maliit na screen: buong lapad ang mga card, mas maliit ang dahon */

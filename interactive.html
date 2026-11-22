@@ -35,10 +35,16 @@
       <div class="map-layout">
 
         <!-- Mapa: mga 3/4 ng lapad -->
-        <iframe id="ph-map"
-                src="https://droughtcaster.pagasa.dost.gov.ph"
-                title="PH Meteorological Drought Monitor (DOST-PAGASA)"
-                loading="lazy"></iframe>
+        <!-- .map-wrap: naka-"freeze" ang mapa. Larawan (images/interactive/map-preview.jpg) ang nakikita at nag-i-scroll nang magaan.
+             Naglo-load ang totoong mapa sa likod; kapag na-click ang larawan, ang buhay na mapa na ang lalabas.
+             Ginagawa ito ng js/map-freeze.js. Walang JavaScript? Ang buhay na mapa lang ang makikita (gaya ng dati). -->
+        <div class="map-wrap" id="map-wrap">
+          <iframe id="ph-map"
+                  src="https://droughtcaster.pagasa.dost.gov.ph"
+                  title="PH Meteorological Drought Monitor (DOST-PAGASA)"></iframe>
+          <img class="map-preview" src="images/interactive/map-preview.jpg" alt="Preview ng PAGASA drought map ng Pilipinas">
+          <button class="map-activate" type="button" aria-label="Activate the live PAGASA drought map"><span>Click to explore the live map</span></button>
+        </div>
 
         <!-- Location card: mga 1/4 ng lapad. Larawan sa taas, tatlong bahagi ng description sa ilalim (1 -> 2 -> 3) -->
         <div class="location-card">
@@ -123,5 +129,7 @@
   <!-- Animated na tuyong background: ulap na hinihipan ng hangin -->
   <script src="js/sky-bg.js"></script>
   <script src="js/quiz.js"></script>
+  <!-- Freeze ng mapa: larawan muna, buhay na mapa kapag na-click -->
+  <script src="js/map-freeze.js"></script>
 </body>
 </html>

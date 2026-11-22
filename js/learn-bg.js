@@ -570,8 +570,8 @@
   }
 
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     W = window.innerWidth; H = window.innerHeight;
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5, Math.sqrt(2000000 / (W * H)));   // limitado ang pixels para gumaan sa malalaking / high-DPI na screen
     U = Math.max(0.7, Math.min(1.4, W / 1300));
     canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
     canvas.style.width = W + "px"; canvas.style.height = H + "px";
@@ -619,14 +619,17 @@
 
   if (reduce) { frame(2, 0); return; }
 
-  var last = 0, running = true;
-  document.addEventListener("visibilitychange", function () { running = !document.hidden; last = 0; if (running) requestAnimationFrame(loop); });
+  // Isang loop lang palagi. (Dati, bawat balik sa tab ay nagdaragdag ng panibagong loop kaya bumibigat ang page.)
+  var last = 0, running = true, raf = 0;
+  function start() { if (!raf) raf = requestAnimationFrame(loop); }
+  document.addEventListener("visibilitychange", function () { running = !document.hidden; last = 0; if (running) start(); });
   function loop(now) {
+    raf = 0;
     if (!running) return;
-    requestAnimationFrame(loop);
+    raf = requestAnimationFrame(loop);
     var t = now / 1000, dt = last ? Math.min(t - last, 0.05) * SETTINGS.speed : 0;
     last = t;
     frame(t * SETTINGS.speed, dt);
   }
-  requestAnimationFrame(loop);
+  start();
 })();

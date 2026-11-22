@@ -22,9 +22,11 @@
 
   // ----- SETTINGS (pwedeng baguhin) -----
   var SETTINGS = {
-    skyTop: "#3a9fc4",          // kulay ng langit sa taas
-    skyMid: "#6fc3dc",          // gitna
-    skyBottom: "#9bd9e8",       // sa baba
+    // Ang kulay ng langit (gradient + liwanag) ay nasa CSS na (body::before sa css/interactive.css),
+    // hindi na iginuguhit dito kada frame. Doon palitan kung gusto ng ibang kulay.
+    fps: 30,                    // pinakamataas na frame rate ng animation (mas mababa = mas magaan ang pag-scroll)
+    maxPixels: 1400000,         // limitasyon ng pixel ng canvas (malabo naman ang ulap at ulan kaya hindi halata)
+    maxDpr: 1,                  // huwag gumamit ng higit sa 1x resolution ng canvas
     cloudsPerLayer: [3, 3, 2],  // ilang puting ulap sa bawat layer (likod -> harap)
     rainClouds: 2,              // ilang ulap na umuulan (0 = walang ulan)
     rainRate: 140,              // dami ng patak bawat segundo sa bawat ulap sa pinakamalakas na ulan
@@ -191,9 +193,11 @@
   }
 
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
     W = window.innerWidth;
     H = window.innerHeight;
+    // Limitado ang dami ng pixel ng canvas (SETTINGS.maxPixels). Sa malalaking o high-DPI na screen, bumibigat ang pag-scroll
+    // kapag buong resolution ang iginuguhit kada frame. Malabo na rin naman ang ulap at ulan kaya hindi halata.
+    dpr = Math.min(window.devicePixelRatio || 1, SETTINGS.maxDpr, Math.sqrt(SETTINGS.maxPixels / (W * H)));
     sizeScale = clamp(W / 1280, 0.55, 1.15);
     canvas.width = Math.round(W * dpr);
     canvas.height = Math.round(H * dpr);
@@ -270,23 +274,6 @@
   }
 
   /* ---------- DRAW ---------- */
-  function drawSky() {
-    var g = ctx.createLinearGradient(0, 0, 0, H);
-    g.addColorStop(0, SETTINGS.skyTop);
-    g.addColorStop(0.55, SETTINGS.skyMid);
-    g.addColorStop(1, SETTINGS.skyBottom);
-    ctx.fillStyle = g;
-    ctx.fillRect(0, 0, W, H);
-
-    // Malambot na liwanag sa itaas-kaliwa
-    var glow = ctx.createRadialGradient(W * 0.18, H * 0.04, 0, W * 0.18, H * 0.04, Math.max(W, H) * 0.65);
-    glow.addColorStop(0, "rgba(255, 255, 255, 0.38)");
-    glow.addColorStop(0.5, "rgba(255, 255, 255, 0.12)");
-    glow.addColorStop(1, "rgba(255, 255, 255, 0)");
-    ctx.fillStyle = glow;
-    ctx.fillRect(0, 0, W, H);
-  }
-
   function drawWhiteLayer(layer, t) {
     var L = LAYERS[layer];
     ctx.globalAlpha = L.alpha;
@@ -361,8 +348,9 @@
   }
 
   function draw(t) {
+    // Transparent ang canvas: ang langit (gradient at liwanag) ay galing sa body::before sa CSS,
+    // kaya hindi na kailangang punuin ng canvas ang buong screen kada frame.
     ctx.clearRect(0, 0, W, H);
-    drawSky();
     drawWhiteLayer(0, t);
     drawWhiteLayer(1, t);
     drawRainClouds(t);
@@ -392,15 +380,29 @@
   // Kung ayaw ng user ng animation: isang still na larawan lang
   if (reduceMotion) { draw(clock); return; }
 
+  // Naka-limit sa SETTINGS.fps (30). Ang galaw ay nakabase sa oras (dt), kaya pareho pa rin ang bilis ng ulap at ulan;
+  // mas kaunti lang ang iginuguhit, kaya may natitirang oras ang browser para sa makinis na pag-scroll.
+  var FRAME_MS = 1000 / SETTINGS.fps;
   var last = null;
+
+  // Habang buhay (na-click) ang mapa ng PAGASA, humihinto ang langit para hindi magsabay ang dalawang mabigat na iginuguhit.
+  // Ang event ay galing sa js/map-freeze.js. Bumabalik ang galaw kapag na-freeze ulit ang mapa.
+  var paused = false;
+  document.addEventListener("agos:map-live", function (e) {
+    paused = !!(e.detail);
+    if (!paused) last = null;   // para hindi tumalon ang oras pagbalik
+  });
+
   function loop(now) {
-    if (last === null) last = now;
-    var dt = Math.min((now - last) / 1000, 0.05) * SETTINGS.speed;  // limitado para hindi tumalon pagbalik sa tab
+    requestAnimationFrame(loop);
+    if (paused) return;
+    if (last === null) { last = now; return; }
+    if (now - last < FRAME_MS - 2) return;   // laktawan ang frame na hindi pa oras (may 2ms na luwag para sa 60Hz screen)
+    var dt = Math.min((now - last) / 1000, 0.1) * SETTINGS.speed;  // limitado para hindi tumalon pagbalik sa tab
     last = now;
     clock += dt;
     update(clock, dt);
     draw(clock);
-    requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
 })();
