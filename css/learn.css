@@ -201,10 +201,9 @@ hr {
   --tips-width: 78%;       /* lapad ng apat na card (ang natitirang espasyo sa kanan ay para sa dahon) */
 }
 
-/* Background: gumagalaw na tubig (js/learn-bg.js, nasa ilalim), tapos ang waves at ang dahon,
-   tapos ang bumabagsak na patak (js/water-drop.js, nasa ibabaw ng dahon).
-   Ang dahon at waves ay nag-i-scroll kasama ng page (dahon sa taas, waves sa pinakababa);
-   ang tubig ay nananatili sa screen. Ang laki ng dahon ay galing pa rin sa --leaf-width. */
+/* Background: animated na lawa (js/learn-bg.js, nasa pinakailalim), tapos ang dahon, tapos ang
+   bumabagsak na patak (js/water-drop.js). Ang dahon ay nag-i-scroll kasama ng page (nasa taas);
+   ang lawa ay nananatili sa screen. Ang laki ng dahon ay galing sa --leaf-width. */
 body {
   position: relative;
   background-color: #43aabc;   /* kulay habang naglo-load */
@@ -226,18 +225,6 @@ body::before {                 /* ang dahon */
   width: var(--leaf-width);
   aspect-ratio: 640 / 1112;
   background: url("../images/learn-leaf-only.webp") no-repeat right top / 100% 100%;
-  z-index: -2;
-  pointer-events: none;
-}
-
-body::after {                  /* ang waves sa pinakababa ng page */
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  aspect-ratio: 2944 / 352;
-  background: url("../images/learn-wave.webp") no-repeat left bottom / 100% 100%;
   z-index: -2;
   pointer-events: none;
 }
