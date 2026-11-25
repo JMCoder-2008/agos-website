@@ -116,9 +116,6 @@ const quizQuestions = [
     answer: 0,
     why: "Rainwater harvesting and conservation programs help save water for the long term. Polluting rivers, cutting trees near water sources, and unlimited usage all damage or waste our water."
   },
-
-  // ===== Mga dagdag na tanong (11-35) =====
-  // 11
   {
     q: "What is the main purpose of technology in our daily lives?",
     options: [
@@ -130,7 +127,6 @@ const quizQuestions = [
     answer: 1,
     why: "Technology exists to help people communicate, work, learn, and finish tasks faster and more easily. The other choices describe harm, which is not its purpose."
   },
-  // 12
   {
     q: "Which of the following is an example of a semiconductor device?",
     options: [
@@ -142,57 +138,52 @@ const quizQuestions = [
     answer: 2,
     why: "A computer chip is built on semiconductor material, the same material at the center of Pax Silica. A chair, a notebook, and a glass bottle are not electronic devices."
   },
-  // 13
   {
     q: "Why is technological development important?",
     options: [
-      "It helps improve people's lives and create new opportunities",
-      "It stops people from learning",
-      "It removes the need for education",
-      "It increases environmental damage only"
+      "It helps improve people's lives and creates new opportunities.",
+      "It prevents people from learning.",
+      "It eliminates the need for education.",
+      "It only increases environmental damage."
     ],
     answer: 0,
     why: "Technological development improves daily life, such as in health, education, and work, and it opens new opportunities. It does not stop learning or replace education."
   },
-  // 14
   {
     q: "What is one possible environmental impact of industrial development?",
     options: [
       "Cleaner air in all areas",
       "More natural forests",
-      "Less energy consumption in every case",
+      "Reduced energy consumption in every case",
       "Increased use of water and energy"
     ],
     answer: 3,
     why: "Factories and industries often use a lot of water and energy, which can put pressure on natural resources. It does not automatically mean cleaner air or more forests."
   },
-  // 15
   {
     q: "Why should industries practice environmental responsibility?",
     options: [
       "To increase waste production",
       "To reduce negative effects on the environment",
-      "To use more natural resources than needed",
-      "To avoid following environmental rules"
+      "To use more natural resources than necessary",
+      "To avoid following environmental regulations"
     ],
     answer: 1,
     why: "Environmental responsibility means reducing harmful effects like pollution and waste, so nature and people stay protected. The other choices would make the damage worse."
   },
-  // 16
   {
     q: "What is El Niño?",
     options: [
       "A type of earthquake",
       "A strong ocean storm",
-      "A climate pattern involving warmer-than-average Pacific Ocean surface waters",
+      "A climate pattern characterized by warmer-than-average surface waters in the Pacific Ocean",
       "A type of volcanic eruption"
     ],
     answer: 2,
     why: "El Niño is a climate pattern where the surface waters of the Pacific Ocean are warmer than average. It is not an earthquake, a storm, or a volcanic eruption."
   },
-  // 17
   {
-    q: "Which condition may occur during El Niño in the Philippines?",
+    q: "Which of the following conditions may occur during El Niño in the Philippines?",
     options: [
       "Reduced rainfall and warmer temperatures",
       "Continuous snowfall",
@@ -202,7 +193,6 @@ const quizQuestions = [
     answer: 0,
     why: "In the Philippines, El Niño usually brings less rainfall and warmer temperatures, which can lead to dry spells and drought. Snow, permanent flooding, and extreme cold do not happen here."
   },
-  // 18
   {
     q: "Which group is commonly affected by drought?",
     options: [
@@ -214,19 +204,17 @@ const quizQuestions = [
     answer: 3,
     why: "Farmers depend on rain and irrigation to grow crops, so drought hits them first and hardest. The other groups are not directly tied to water for their work."
   },
-  // 19
   {
     q: "What is one possible effect of prolonged drought on agriculture?",
     options: [
       "Increased water supply",
-      "Crop damage and reduced harvest",
+      "Crop damage and reduced harvests",
       "Unlimited irrigation water",
       "Faster forest growth"
     ],
     answer: 1,
     why: "Without enough water, plants dry out and die, which damages crops and lowers the harvest. Drought reduces the water supply; it does not increase it."
   },
-  // 20
   {
     q: "Which action can help communities prepare for dry conditions?",
     options: [
@@ -238,7 +226,6 @@ const quizQuestions = [
     answer: 2,
     why: "Practicing water conservation helps the community make its water last during dry conditions. Wasting water, ignoring weather updates, and leaving faucets open make shortages worse."
   },
-  // 21
   {
     q: "What are water resources?",
     options: [
@@ -250,9 +237,8 @@ const quizQuestions = [
     answer: 0,
     why: "Water resources are natural sources of water, such as rivers, lakes, groundwater, and oceans, that people and the environment depend on. The other choices are man-made things."
   },
-  // 22
   {
-    q: "Which of the following is a freshwater source?",
+    q: "Which of the following is a source of freshwater?",
     options: [
       "Ocean",
       "Sea",
@@ -262,19 +248,17 @@ const quizQuestions = [
     answer: 3,
     why: "A lake is a freshwater source. Oceans, seas, and saltwater pools contain salt water, which is not suitable for drinking or farming without treatment."
   },
-  // 23
   {
     q: "Why is clean water important to human beings?",
     options: [
-      "It is used only for transportation",
-      "It supports health, sanitation, and daily activities",
-      "It is needed only by farmers",
-      "It has no connection to human health"
+      "It is used only for transportation.",
+      "It supports health, sanitation, and daily activities.",
+      "It is needed only by farmers.",
+      "It has no connection to human health."
     ],
     answer: 1,
     why: "Clean water keeps us healthy and is needed for sanitation, cooking, drinking, and daily activities. It is not only for transportation or farmers."
   },
-  // 24
   {
     q: "What is water conservation?",
     options: [
@@ -286,137 +270,71 @@ const quizQuestions = [
     answer: 2,
     why: "Water conservation means using water wisely and avoiding unnecessary waste, so there is enough for everyone now and later."
   },
-  // 25
   {
-    q: "Which activity can cause water pollution?",
+    q: "Which of the following activities can cause water pollution?",
     options: [
       "Throwing garbage into rivers",
       "Planting trees near waterways",
-      "Proper waste disposal",
+      "Practicing proper waste disposal",
       "Cleaning water sources"
     ],
     answer: 0,
     why: "Throwing garbage into rivers pollutes the water. Planting trees, proper waste disposal, and cleaning water sources all protect it."
   },
-  // 26
   {
     q: "What is the main purpose of protecting watersheds?",
     options: [
       "To increase soil pollution",
       "To encourage illegal logging",
       "To reduce the number of freshwater sources",
-      "To help protect water sources and maintain water quality"
+      "To protect water sources and maintain water quality"
     ],
     answer: 3,
     why: "Protecting watersheds keeps water sources safe and maintains water quality. Pollution and illegal logging would damage them."
   },
-  // 27
   {
-    q: "Which human activity helps conserve water?",
+    q: "Which of the following human activities helps conserve water?",
     options: [
       "Taking unnecessarily long showers",
-      "Turning off the faucet when not in use",
-      "Washing only one item at a time using running water",
+      "Turning off the faucet when it is not in use",
+      "Washing only one item at a time under running water",
       "Ignoring leaking pipes"
     ],
     answer: 1,
     why: "Turning off the faucet when it is not in use saves water. The other choices waste water, including leaking pipes that nobody fixes."
   },
-  // 28
   {
     q: "What can happen when people waste too much water?",
     options: [
-      "Water resources become unlimited",
-      "Rivers automatically become cleaner",
-      "Available water supplies may decrease",
-      "Water pollution disappears"
+      "Water resources become unlimited.",
+      "Rivers automatically become cleaner.",
+      "Available water supplies may decrease.",
+      "Water pollution disappears."
     ],
     answer: 2,
     why: "Wasting too much water means less is left for everyone, so available water supplies may decrease. Water is not unlimited, and waste does not clean rivers or remove pollution."
   },
-  // 29
   {
     q: "Why are El Niño, technological development, and water resources important environmental topics?",
     options: [
-      "They are connected to water availability and environmental sustainability",
-      "They only affect entertainment",
-      "They have no effect on communities",
-      "They are unrelated to people's daily lives"
+      "They are connected to water availability and environmental sustainability.",
+      "They only affect entertainment.",
+      "They have no effect on communities.",
+      "They are unrelated to people's daily lives."
     ],
     answer: 0,
     why: "El Niño, technological development, and water resources are all linked to how much water is available and to a sustainable environment, so they affect communities and daily life."
   },
-  // 30
   {
     q: "What is the best way to help protect the environment for future generations?",
     options: [
-      "Ignore environmental problems",
-      "Use natural resources without limits",
-      "Allow pollution to increase",
-      "Practice sustainability and responsible use of natural resources"
+      "Ignoring environmental problems",
+      "Using natural resources without limits",
+      "Allowing pollution to increase",
+      "Practicing sustainability and using natural resources responsibly"
     ],
     answer: 3,
     why: "Practicing sustainability and using natural resources responsibly keeps the environment healthy for the next generations. Ignoring problems or letting pollution grow harms them."
-  },
-  // 31
-  {
-    q: "What is water conservation?",
-    options: [
-      "Using water carelessly",
-      "Protecting and using water wisely to prevent waste",
-      "Throwing garbage into rivers",
-      "Using clean water for unnecessary activities"
-    ],
-    answer: 1,
-    why: "Water conservation means protecting water and using it wisely to prevent waste. Careless or unnecessary use, and dumping garbage, are the opposite."
-  },
-  // 32
-  {
-    q: "Which of the following is a good way to save water at home?",
-    options: [
-      "Keeping the faucet open while brushing your teeth",
-      "Taking very long showers",
-      "Fixing leaking faucets and pipes",
-      "Washing clothes one piece at a time"
-    ],
-    answer: 2,
-    why: "Fixing leaking faucets and pipes stops water from being wasted every day. Keeping the faucet open and taking very long showers waste water."
-  },
-  // 33
-  {
-    q: "Why is water conservation important?",
-    options: [
-      "Because water resources are unlimited",
-      "Because all living things need water to survive",
-      "Because water has no purpose",
-      "Because it increases water pollution"
-    ],
-    answer: 1,
-    why: "All living things need water to survive, which is why we must conserve it. Water resources are not unlimited, and conserving water does not increase pollution."
-  },
-  // 34
-  {
-    q: "Which activity helps protect our water sources?",
-    options: [
-      "Throwing chemicals into rivers",
-      "Dumping garbage into lakes",
-      "Properly disposing of waste and keeping waterways clean",
-      "Wasting clean drinking water"
-    ],
-    answer: 2,
-    why: "Disposing of waste properly and keeping waterways clean protects our water sources. Dumping chemicals or garbage and wasting drinking water harm them."
-  },
-  // 35
-  {
-    q: "What is the best responsibility of every individual in conserving water?",
-    options: [
-      "Wait for the government to solve water problems",
-      "Use water responsibly and encourage others to save it",
-      "Ignore water shortages",
-      "Waste water whenever possible"
-    ],
-    answer: 1,
-    why: "Every person can help by using water responsibly and encouraging others to save it. Waiting for others, ignoring shortages, or wasting water does not help."
   }
 ];
 

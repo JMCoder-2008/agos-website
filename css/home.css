@@ -68,8 +68,12 @@ main {
 .button:visited {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 28px;
+  /* Nasa gitna ang arrow sa pagitan ng salitang "Now" at ng kanang gilid ng button: ang layo mula sa salita
+     (gap) ay kapareho ng layo mula sa kanang gilid (padding-right). Palitan ang isang numerong ito para
+     lumuwag o sumikip ang dalawa nang sabay. */
+  --arrow-space: 16px;
+  gap: var(--arrow-space);
+  padding: 12px var(--arrow-space) 12px 28px;
   border-radius: 10px;
   background-color: var(--deep-navy);
   color: #fff;

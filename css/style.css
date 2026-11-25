@@ -13,6 +13,8 @@
   --nav-bg-end: #17577d;                      /* kanan (bahagyang papunta sa Ocean Blue) */
   --nav-text: #ffffff;                        /* kulay ng text ng menu */
   --nav-hover-bg: rgba(255, 255, 255, 0.16);  /* kapag na-hover */
+  --nav-active-bg: #FFFFFF;                   /* kulay ng pill ng active na menu (ang page na binuksan): Option A, puting pill */
+  --nav-active-text: #123B5D;                 /* kulay ng text sa active na menu (Deep Navy) */
   --nav-divider: rgba(255, 255, 255, 0.45);   /* patayong linya sa tabi ng logo */
 
   --logo-height: 46px;     /* laki ng logo (dati 70px) */
@@ -20,6 +22,13 @@
   --nav-link-gap: 8px;     /* espasyo sa pagitan ng mga menu button */
   --navbar-line: 0px;      /* WALA na ang light-blue na linya sa ilalim ng navbar (dati 4px) */
   --divider-line: 2px;     /* kapal ng patayong linya sa pagitan ng logo at menu */
+  /* Nasaan ang patayong linya mula sa kaliwang gilid ng navbar. Kapantay ng kaliwang gilid ng letrang "E" sa heading;
+     max(...) = hindi hahayaang tumama sa logo kapag makitid ang screen. Ginagamit ito ng linya MISMO at ng logo, kaya
+     laging nasa gitna ng logo ang espasyo mula sa kaliwang gilid hanggang sa linya, kahit anong laki ng screen. */
+  --divider-x: max(
+    calc(50% - var(--content-width) / 2 + var(--content-inset)),
+    calc(40px + var(--logo-height) * 2 + 20px)
+  );
   /* MGA PANEL (navy na kahon sa mga page): semi-transparent para makita ang background.
      --panel-alpha: 1 = solid (walang kita), 0.62 = kasalukuyan (pinakamababa na basa pa rin ang puting text),
      0.5 pababa = hindi na mabasa sa maliwanag na background.
@@ -36,6 +45,7 @@
 
 body {
   margin: 0;   /* para dikit sa gilid ng screen ang navbar kapag naka-sticky */
+  overscroll-behavior-y: none;   /* walang "bounce" kapag nag-overscroll sa trackpad: hindi bumababa ang navbar */
 }
 
 /* Linya na naghihiwalay sa navbar at sa page.
@@ -67,6 +77,7 @@ header.nav-hidden {
 /* Kapag pumunta sa #section, huwag matakpan ng navbar ang heading */
 html {
   scroll-padding-top: 70px;
+  overscroll-behavior-y: none;   /* walang "bounce" kapag nag-overscroll sa trackpad (nananatili sa taas ang navbar) */
 }
 
 /* 3 column: logo (kaliwa) | menu (gitna) | bakanteng espasyo (kanan)
@@ -87,10 +98,7 @@ nav::after {
   position: absolute;
   top: 8px;
   bottom: 8px;
-  left: max(
-    calc(50% - var(--content-width) / 2 + var(--content-inset)),
-    calc(40px + var(--logo-height) * 2 + 20px)
-  );
+  left: var(--divider-x);
   width: var(--divider-line);
   background: var(--nav-divider);
 }
@@ -134,20 +142,50 @@ nav ul a:visited {
   transition: background-color 0.25s ease;   /* makinis na pagpalit ng kulay */
 }
 
-/* Hover: manipis na puting tint. Active (ang page na binuksan): Ocean Blue, para magkaiba */
+/* Hover: manipis na puting tint. Active (ang page na binuksan): puting pill na may navy na text (Option A), para magkaiba */
 nav ul a:hover {
   background-color: var(--nav-hover-bg);
 }
 
 nav ul a.active,
 nav ul a.active:hover {
-  background-color: var(--ocean-blue);
+  background-color: var(--nav-active-bg);
+  color: var(--nav-active-text);
 }
 
 /* Para sa keyboard (Tab key) */
 nav ul a:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 2px;
+}
+
+/* Malaking screen (may patayong linya): ang logo ay laging nasa GITNA ng espasyo mula sa kaliwang gilid ng screen
+   hanggang sa patayong linya. Nakalutang (absolute) ang logo para hindi ito maapektuhan ng 3 column ng navbar, kaya
+   tahasang inilagay ang menu sa column 2 at ang search sa column 3, at itinakda ang taas ng row para hindi lumiit ang navbar. */
+@media (min-width: 1221px) {
+  nav {
+    grid-template-rows: var(--logo-height);
+  }
+  nav ul {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  nav .search {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .logo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: var(--divider-x);   /* mula sa kaliwang gilid hanggang sa patayong linya */
+    justify-content: center;   /* gitna ng espasyong iyon */
+    pointer-events: none;      /* ang larawan lang ng logo ang clickable, hindi ang buong espasyo */
+  }
+  .logo img {
+    pointer-events: auto;
+  }
 }
 
 /* Maliit na screen: hindi kasya ang 3 column, kaya pagpatong-patongin at i-center */
