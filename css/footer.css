@@ -34,16 +34,53 @@ footer {
 
 .socials {
   display: flex;
-  gap: 12px;
+  gap: 10px;
+  margin-top: 14px;
 }
 
-/* Social links: navy (hindi na asul/purple), ocean blue kapag na-hover */
+/* Social links: mga bilog na icon button (dati text links).
+   Navy ang icon, tapos ocean blue na may puting icon kapag na-hover. */
 .socials a,
 .socials a:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
   color: var(--deep-navy);
+  background-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 2px 8px rgba(18, 59, 93, 0.12);
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease,
+              transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.socials a svg {
+  width: 18px;
+  height: 18px;
+  display: block;
 }
 
 .socials a:hover,
 .socials a:focus-visible {
-  color: var(--ocean-blue);
+  color: #fff;
+  background-color: var(--ocean-blue);
+  box-shadow: 0 6px 14px rgba(36, 151, 184, 0.35);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.socials a:focus-visible {
+  outline: 2px solid var(--deep-navy);
+  outline-offset: 2px;
+}
+
+/* Maliit na screen: sapat na laki pa rin para ma-tap */
+@media (max-width: 480px) {
+  .socials a,
+  .socials a:visited {
+    width: 42px;
+    height: 42px;
+  }
 }
