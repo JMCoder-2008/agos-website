@@ -37,7 +37,22 @@
 
     <!-- 2. PICTURE: group photo -->
 <section id="picture">
-  <img src="images/group.jpg" alt="AGOS project members">
+  <!-- Photo + hotspots: i-hover ang tao para lumabas ang pangalan, i-click para pumunta sa Project Members -->
+  <div class="photo-wrap">
+    <img src="images/group.jpg" alt="AGOS project members">
+    <!-- Outline ng bawat tao (SVG, sukat ng photo: 1853x1104). Nasa huli ang mga nasa harap para sila ang masunod kapag magkapatong. -->
+    <svg class="hotspots" viewBox="0 0 1853 1104" preserveAspectRatio="none" aria-label="Project members">
+      <path class="hotspot" role="button" tabindex="0" data-member="0" aria-label="Lance Jay Aguilera: click for more details" d="M575,135 C577,122 582,104 592,95 C602,86 620,81 635,82 C650,83 672,92 682,102 C692,112 694,130 695,145 C696,160 692,182 688,195 C684,208 670,218 672,225 C674,232 689,234 700,240 C711,246 733,247 738,262 C743,277 735,304 732,330 C729,356 726,388 722,420 C718,452 710,497 705,520 C700,543 704,551 690,560 C676,569 642,567 620,575 C598,583 573,599 560,610 C547,621 547,638 540,640 C533,642 522,638 520,625 C518,612 530,591 525,560 C520,529 499,469 490,440 C481,411 473,397 470,385 C467,373 467,390 472,370 C477,350 489,289 500,268 C511,247 523,252 540,245 C557,238 592,231 600,225 C608,219 589,219 585,210 C581,201 580,182 578,170 C576,158 573,148 575,135Z"/>
+      <path class="hotspot" role="button" tabindex="0" data-member="1" aria-label="Princess Nadine Atienza: click for more details" d="M800,180 C803,172 807,156 815,150 C823,144 838,140 850,143 C862,146 880,154 888,165 C896,176 896,196 895,210 C894,224 880,238 885,248 C890,258 917,256 925,268 C933,280 932,295 935,320 C938,345 942,387 942,420 C942,453 941,497 938,520 C935,543 932,556 925,560 C918,564 901,564 895,545 C889,526 896,468 890,445 C884,422 875,413 860,405 C845,397 820,395 800,397 C780,399 753,418 738,415 C723,412 718,391 712,380 C706,369 702,363 705,350 C708,337 716,314 730,300 C744,286 778,276 790,265 C802,254 799,246 800,235 C801,224 798,209 798,200 C798,191 797,188 800,180Z"/>
+      <path class="hotspot" role="button" tabindex="0" data-member="5" aria-label="Lyka Jane Linatoc: click for more details" d="M990,215 C994,203 1000,195 1010,190 C1020,185 1038,182 1050,185 C1062,188 1073,192 1080,205 C1087,218 1087,242 1090,260 C1093,278 1096,296 1100,310 C1104,324 1109,332 1115,345 C1121,358 1132,364 1135,385 C1138,406 1141,451 1135,470 C1129,489 1111,497 1100,500 C1089,503 1074,500 1068,490 C1062,480 1072,451 1062,440 C1052,429 1028,427 1010,425 C992,423 968,435 955,430 C942,425 941,405 935,395 C929,385 919,378 920,370 C921,362 929,357 940,350 C951,343 978,345 985,330 C992,315 984,279 985,260 C986,241 986,227 990,215Z"/>
+      <path class="hotspot" role="button" tabindex="0" data-member="4" aria-label="Loren Kempis: click for more details" d="M1152,225 C1150,213 1148,202 1150,190 C1152,178 1156,159 1165,150 C1174,141 1192,135 1205,137 C1218,139 1233,147 1240,160 C1247,173 1246,200 1245,215 C1244,230 1232,242 1235,250 C1238,258 1254,259 1265,265 C1276,271 1295,271 1300,285 C1305,299 1298,342 1295,350 C1292,358 1292,335 1285,330 C1278,325 1264,319 1250,318 C1236,317 1214,321 1200,325 C1186,329 1177,336 1165,340 C1153,344 1140,353 1130,350 C1120,347 1110,330 1108,320 C1106,310 1111,300 1120,290 C1129,280 1155,273 1160,262 C1165,251 1154,237 1152,225Z"/>
+      <path class="hotspot" role="button" tabindex="0" data-member="7" aria-label="Gian Carlo Sagales: click for more details" d="M1360,110 C1364,97 1373,78 1385,70 C1397,62 1416,60 1430,65 C1444,70 1462,84 1470,100 C1478,116 1477,142 1475,160 C1473,178 1466,193 1460,205 C1454,217 1435,225 1440,232 C1445,239 1469,230 1490,245 C1511,260 1549,302 1565,320 C1581,338 1586,342 1585,355 C1584,368 1567,381 1560,400 C1553,419 1551,438 1545,470 C1539,502 1528,552 1525,590 C1522,628 1527,643 1527,700 C1527,757 1534,900 1525,930 C1516,960 1482,915 1470,880 C1458,845 1460,763 1455,720 C1450,677 1454,645 1440,620 C1426,595 1393,581 1370,570 C1347,559 1313,567 1300,555 C1287,543 1293,533 1290,500 C1287,467 1275,388 1282,355 C1289,322 1313,319 1330,300 C1347,281 1379,257 1385,240 C1391,223 1369,215 1365,200 C1361,185 1361,165 1360,150 C1359,135 1356,123 1360,110Z"/>
+      <path class="hotspot" role="button" tabindex="0" data-member="2" aria-label="Jemil Devota: click for more details" d="M1155,400 C1158,378 1169,354 1180,340 C1191,326 1206,317 1220,315 C1234,313 1254,319 1265,330 C1276,341 1282,362 1285,380 C1288,398 1285,423 1280,440 C1275,457 1254,471 1255,480 C1256,489 1268,488 1285,495 C1302,502 1336,504 1360,520 C1384,536 1412,568 1430,590 C1448,612 1455,630 1465,650 C1475,670 1489,688 1490,710 C1491,732 1480,757 1470,780 C1460,803 1433,830 1430,850 C1427,870 1442,877 1450,900 C1458,923 1472,956 1475,990 C1478,1024 1504,1085 1465,1104 C1426,1123 1279,1121 1240,1104 C1201,1087 1228,1026 1230,1000 C1232,974 1233,970 1250,950 C1267,930 1312,905 1330,880 C1348,855 1365,823 1360,800 C1355,777 1320,757 1300,740 C1280,723 1257,713 1240,700 C1223,687 1210,670 1200,660 C1190,650 1195,652 1180,640 C1165,628 1128,606 1110,590 C1092,574 1080,560 1075,545 C1070,530 1074,509 1082,500 C1090,491 1106,495 1120,490 C1134,485 1159,485 1165,470 C1171,455 1152,422 1155,400Z"/>
+      <path class="hotspot" role="button" tabindex="0" data-member="6" aria-label="Jhon Ashley Manese: click for more details" d="M735,470 C739,452 748,432 760,420 C772,408 788,400 805,398 C822,396 846,399 860,410 C874,421 885,445 890,465 C895,485 891,512 888,530 C885,548 866,563 870,575 C874,587 902,589 910,600 C918,611 922,620 920,640 C918,660 900,677 895,720 C890,763 892,839 890,900 C888,961 920,1054 880,1085 C840,1116 707,1087 650,1085 C593,1083 555,1086 540,1075 C525,1064 567,1039 560,1020 C553,1001 513,997 500,960 C487,923 475,843 480,800 C485,757 510,728 530,700 C550,672 572,656 600,630 C628,604 678,562 700,545 C722,528 729,538 735,525 C741,512 731,488 735,470Z"/>
+      <path class="hotspot" role="button" tabindex="0" data-member="3" aria-label="Jayvee Gatinao: click for more details" d="M940,490 C941,470 940,452 950,440 C960,428 983,419 1000,418 C1017,417 1038,422 1050,432 C1062,442 1068,461 1070,480 C1072,499 1068,529 1065,545 C1062,561 1047,566 1050,575 C1053,584 1062,594 1085,600 C1108,606 1162,595 1190,610 C1218,625 1230,657 1250,690 C1270,723 1303,780 1310,810 C1317,840 1303,855 1290,870 C1277,885 1242,888 1230,900 C1218,912 1215,923 1215,940 C1215,957 1228,973 1230,1000 C1232,1027 1285,1087 1230,1104 C1175,1121 958,1113 900,1104 C842,1095 882,1074 880,1050 C878,1026 895,997 890,960 C885,923 852,868 850,830 C848,792 867,762 880,730 C893,698 916,662 930,640 C944,618 962,613 965,600 C968,587 949,578 945,560 C941,542 939,510 940,490Z"/>
+    </svg>
+  </div>
+  <div class="photo-tip" id="photoTip" aria-hidden="true"><strong></strong><span>Click for more details</span></div>
 </section>
 
     <!-- 3. PROJECT MEMBERS -->
@@ -167,45 +182,177 @@
   <!-- Animated na tubig sa likod ng page -->
   <script src="js/water-bg.js"></script>
 
-  <!-- Member hover card: lumalabas sa kanan ng cursor (Wikipedia-style) -->
+  <!-- Member hover card (Wikipedia-style) + group photo hotspots -->
   <script>
-    document.querySelectorAll('.member').forEach(function (member) {
-      var card = member.querySelector('.member-card');
-      if (!card) return;
+    (function () {
+      var members = Array.prototype.slice.call(document.querySelectorAll('.member'));
+      var section = document.getElementById('members');
+      var GAP = 18;          // layo ng card sa cursor (para kasya ang arrow)
+      var DWELL = 500;       // ms: gaano katagal dapat naka-hover sa ibang pangalan bago lumipat ang card
+      var FADE_TIME = 450;   // ms: tagal ng smooth na pagkawala
+      var MOVE_MIN = 4;      // px: gaano kalayo ang galaw para ituring na "ginalaw ng user" ang mouse
 
-      var GAP = 18; // layo ng card sa cursor (para kasya ang arrow)
+      /* ======================= RULES =======================
+         Pagkatapos mag-click sa photo, naka-LOCK ang hover sa mga pangalan (#members.locked).
+         - Habang nag-i-scroll pababa: walang lalabas na card sa ibang pangalan.
+         - Naka-pin ang card ng na-click. Lilipat lang ito kapag ginalaw talaga ng user ang mouse
+           at nag-hover ng DWELL ms sa ibang pangalan. Kapag nadaanan lang / dumapo lang dahil sa scroll: walang mangyayari.
+         - Kapag nag-scroll ang user: mawawala agad ang card (smooth fade).
+         - Pagkatapos nito, naka-lock pa rin hanggang gumalaw ulit ang mouse.
+         ====================================================== */
+      var phase = 'idle';          // 'scrolling' (papunta pa sa baba) | 'pinned' | 'idle'
+      var pinned = null;           // member na naka-pin
+      var fadeTimer = null, dwellTimer = null, dwellTarget = null, goToken = 0;
+      var lastX = 0, lastY = 0, anchorX = -999, anchorY = -999, realMove = false;
 
-      function place(x, y) {
-        var w = card.offsetWidth;
-        var h = card.offsetHeight;
+      function setLocked(v) { section.classList.toggle('locked', v); }
+      function isLocked() { return section.classList.contains('locked'); }
 
-        // kung sobra na sa kanan ng screen, ilipat sa kaliwa ng cursor
-        var flip = x + GAP + w > window.innerWidth - 8;
+      // Totoong galaw lang ang binibilang (hindi yung galaw na gawa ng browser pagkatapos mag-scroll)
+      document.addEventListener('mousemove', function (e) {
+        lastX = e.clientX; lastY = e.clientY;
+        realMove = Math.abs(e.clientX - anchorX) + Math.abs(e.clientY - anchorY) >= MOVE_MIN;
+        if (realMove) { anchorX = e.clientX; anchorY = e.clientY; }
+        if (realMove && phase === 'idle' && isLocked()) setLocked(false);   // gumalaw ulit ang user: normal na ulit ang hover
+      }, true);
+
+      function place(card, member, x, y, forceFlip) {
+        var w = card.offsetWidth, h = card.offsetHeight;
+        var flip = !!forceFlip || x + GAP + w > window.innerWidth - 8;   // kapos sa kanan: ilipat sa kaliwa
         card.classList.toggle('flip', flip);
-
-        var left = flip ? x - GAP - w : x + GAP;
-
-        // vertical: naka-center sa cursor, pero hindi lalampas sa screen
-        var top = y - h / 2;
-        top = Math.max(8, Math.min(top, window.innerHeight - h - 8));
-
-        // arrow laging nakaturo sa cursor
-        var arrowY = Math.max(14, Math.min(y - top, h - 14));
-
-        card.style.left = left + 'px';
+        var top = Math.max(8, Math.min(y - h / 2, window.innerHeight - h - 8));
+        card.style.left = (flip ? x - GAP - w : x + GAP) + 'px';
         card.style.top = top + 'px';
-        card.style.setProperty('--arrow-y', arrowY + 'px');
+        card.style.setProperty('--arrow-y', Math.max(14, Math.min(y - top, h - 14)) + 'px');
       }
 
-      member.addEventListener('mouseenter', function (e) { place(e.clientX, e.clientY); });
-      member.addEventListener('mousemove', function (e) { place(e.clientX, e.clientY); });
-
-      // para sa keyboard focus (walang cursor)
-      member.addEventListener('focus', function () {
+      // saan ilalagay ang card kapag walang cursor (click sa photo / keyboard)
+      function placeAtName(member) {
+        var card = member.querySelector('.member-card');
         var r = member.getBoundingClientRect();
-        place(r.left + 40, r.top + r.height / 2);
+        var x = r.left + Math.min(240, r.width - 30);
+        // kapag lilipat sa kaliwa ang card, ituro ang kaliwang gilid ng pangalan para hindi matakpan ang text
+        var flip = x + GAP + card.offsetWidth > window.innerWidth - 8;
+        if (flip) x = r.left + 10;
+        place(card, member, x, r.top + r.height / 2, flip);
+      }
+
+      /* ---------- dwell: hover ng ~1 segundo sa ibang pangalan ---------- */
+      function cancelDwell() { clearTimeout(dwellTimer); dwellTimer = null; dwellTarget = null; }
+
+      function startDwell(member) {
+        cancelDwell();
+        dwellTarget = member;
+        dwellTimer = setTimeout(function () {
+          dwellTarget = null;
+          unpin(true);
+          setLocked(false);
+          place(member.querySelector('.member-card'), member, lastX, lastY);   // ang hover na ang bahala sa pagpapakita
+        }, DWELL);
+      }
+
+      /* ---------- hover sa pangalan ---------- */
+      members.forEach(function (member) {
+        var card = member.querySelector('.member-card');
+        if (!card) return;
+        member.addEventListener('mouseenter', function (e) { place(card, member, e.clientX, e.clientY); });
+        member.addEventListener('mousemove', function (e) {
+          place(card, member, e.clientX, e.clientY);
+          if (phase === 'pinned' && member !== pinned && realMove && dwellTarget !== member) startDwell(member);
+        });
+        member.addEventListener('mouseleave', function () { if (dwellTarget === member) cancelDwell(); });
+        // Kapag na-click ng mouse, huwag mag-focus (kung hindi, mananatiling nakalutang ang card).
+        member.addEventListener('mousedown', function (e) { e.preventDefault(); });
+        // keyboard focus (walang cursor)
+        member.addEventListener('focus', function () { placeAtName(member); });
       });
-    });
+
+      /* ---------- naka-pin na card (galing sa click sa photo) ---------- */
+      function unpin(immediate) {
+        clearTimeout(fadeTimer);
+        cancelDwell();
+        phase = 'idle';
+        if (!pinned) return;
+        var m = pinned, card = m.querySelector('.member-card');
+        pinned = null;
+        m.classList.remove('active');
+        card.classList.remove('show');               // smooth fade-out (galing sa .pinned transition)
+        if (immediate) { card.classList.remove('pinned'); return; }
+        fadeTimer = setTimeout(function () { card.classList.remove('pinned'); }, FADE_TIME);
+      }
+
+      function pin(member) {
+        pinned = member;
+        phase = 'pinned';
+        var card = member.querySelector('.member-card');
+        member.classList.add('active');
+        card.classList.add('pinned');
+        placeAtName(member);
+        void card.offsetWidth;                        // para mag-animate ang paglitaw
+        card.classList.add('show');
+      }
+
+      // hintayin munang matapos ang smooth scroll bago i-pin ang card
+      function afterScroll(done) {
+        var last = window.scrollY, still = 0;
+        (function tick() {
+          if (window.scrollY === last) { still++; } else { still = 0; last = window.scrollY; }
+          if (still >= 6) { done(); } else { requestAnimationFrame(tick); }
+        })();
+      }
+
+      // nag-scroll ang user habang naka-pin: mawawala agad
+      window.addEventListener('scroll', function () {
+        if (phase === 'pinned') unpin(false);
+      }, { passive: true });
+
+      /* ---------- group photo hotspots ---------- */
+      var tip = document.getElementById('photoTip');
+      var tipName = tip.querySelector('strong');
+
+      function nameOf(idx) { return members[idx].querySelector('img').alt; }
+
+      function moveTip(x, y) {
+        var w = tip.offsetWidth, h = tip.offsetHeight;
+        var left = Math.min(x + 14, window.innerWidth - w - 8);
+        var top = y + 18 + h > window.innerHeight - 8 ? y - h - 14 : y + 18;
+        tip.style.left = Math.max(8, left) + 'px';
+        tip.style.top = Math.max(8, top) + 'px';
+      }
+
+      function go(idx) {
+        var member = members[idx];
+        var token = ++goToken;
+        unpin(true);
+        setLocked(true);
+        phase = 'scrolling';
+        tip.classList.remove('visible');
+        member.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        afterScroll(function () { if (token === goToken) pin(member); });
+      }
+
+      document.querySelectorAll('.hotspot').forEach(function (spot) {
+        var idx = +spot.dataset.member;
+        spot.addEventListener('mouseenter', function (e) {
+          tipName.textContent = nameOf(idx);
+          tip.classList.add('visible');
+          moveTip(e.clientX, e.clientY);
+        });
+        spot.addEventListener('mousemove', function (e) { moveTip(e.clientX, e.clientY); });
+        spot.addEventListener('mouseleave', function () { tip.classList.remove('visible'); });
+        spot.addEventListener('focus', function () {
+          var r = spot.getBoundingClientRect();
+          tipName.textContent = nameOf(idx);
+          tip.classList.add('visible');
+          moveTip(r.left + r.width / 2, r.top + r.height / 2);
+        });
+        spot.addEventListener('blur', function () { tip.classList.remove('visible'); });
+        spot.addEventListener('click', function () { go(idx); });
+        spot.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(idx); }
+        });
+      });
+    })();
   </script>
 </body>
 </html>

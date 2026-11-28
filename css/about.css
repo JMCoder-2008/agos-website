@@ -73,7 +73,8 @@ main {
 }
 
 .member-list li:hover,
-.member-list li:focus {
+.member-list li.active,
+.member-list li:focus-visible {
   background: #fff;
   border-color: var(--ocean-blue);
   box-shadow: 0 2px 10px rgba(36, 151, 184, 0.35);
@@ -138,9 +139,10 @@ main {
   border-top: 1px solid #c8ccd1;
 }
 
-/* kapag na-hover o na-focus: lilitaw at lalaki sa tamang sukat */
+/* kapag na-hover o na-focus gamit ang KEYBOARD (:focus-visible, hindi tinatamaan ng mouse click): lilitaw at lalaki sa tamang sukat */
 .member:hover .member-card,
-.member:focus .member-card {
+.member:focus-visible .member-card,
+.member-card.show {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
@@ -241,4 +243,130 @@ body::before {
   inset: 0;
   z-index: -1;
   background: linear-gradient(180deg, #3a9fc4 0%, #62bcd8 50%, #8fd3e3 100%);
+}
+
+
+/* =====================================================================
+   GROUP PHOTO HOTSPOTS: i-hover ang tao para lumabas ang pangalan,
+   i-click para pumunta sa Project Members at ipakita ang description.
+   Ang left/top/width/height ng bawat .hotspot ay nasa about.html (sa %).
+   ===================================================================== */
+
+.photo-wrap {
+  position: relative;
+}
+
+/* nakapatong sa loob ng larawan (hindi kasama ang 5px na border) */
+.hotspots {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  overflow: visible;
+}
+
+/* hugis ng katawan: walang nakikita hanggang ma-hover (outline lang), pero natatamaan pa rin ng mouse */
+.hotspot {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;   /* pareho ang kapal ng outline kahit lumiit ang photo */
+  pointer-events: all;
+  cursor: pointer;
+  outline: none;
+  transition: fill 0.2s ease, stroke 0.2s ease, filter 0.2s ease;
+}
+
+.hotspot:hover,
+.hotspot:focus-visible {
+  stroke: #fff;               /* outline lang, walang fill sa loob */
+  filter: drop-shadow(0 0 6px rgba(36, 151, 184, 0.9));
+}
+
+/* label na sumusunod sa cursor */
+.photo-tip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: var(--deep-navy);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, visibility 0.15s;
+}
+
+.photo-tip.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.photo-tip strong { font-size: 16px; }
+.photo-tip span   { font-size: 13px; opacity: 0.8; }
+
+/* Naka-pin na card (galing sa click sa photo): mas mabagal at smooth ang pagkawala */
+.member-card.pinned {
+  transition: opacity 0.45s ease,
+              transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+              visibility 0.45s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hotspot, .photo-tip, .member-card.pinned { transition: none; }
+}
+
+
+/* =====================================================================
+   LOCK: pagkatapos mag-click sa photo, hindi muna lalabas ang card (o highlight) ng ibang pangalan
+   kahit madaanan o madapuan ng cursor. Ang JS (about.html) ang nagdadagdag/nag-aalis ng class na .locked.
+   ===================================================================== */
+#members.locked .member:not(.active):hover .member-card {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.92);
+}
+
+#members.locked .member-list li:not(.active):hover {
+  background: #e3e9ef;
+  border-color: #c3ccd6;
+  box-shadow: 0 2px 8px rgba(18, 59, 93, 0.22);
+}
+
+
+/* =====================================================================
+   WALANG PAGHIHIGHLIGHT (blue na selection) sa description card, mga pangalan, at group photo.
+   Nangyayari kasi ito kapag na-drag o na-double click (halimbawa, basa o sensitibo ang touchpad)
+   at hindi na maalis kung hindi mag-refresh, dahil hindi natatamaan ng mouse ang card (pointer-events: none).
+   ===================================================================== */
+.member-card,
+.member-card *,
+.member-list li,
+.photo-tip,
+.photo-tip *,
+#picture {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* hindi rin madi-drag ang mga larawan (para walang "ghost image" kapag na-drag) */
+.member-card img,
+#picture img {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+.hotspots {
+  -webkit-user-select: none;
+  user-select: none;
 }
