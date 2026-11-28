@@ -188,21 +188,20 @@
       var members = Array.prototype.slice.call(document.querySelectorAll('.member'));
       var section = document.getElementById('members');
       var GAP = 18;          // layo ng card sa cursor (para kasya ang arrow)
-      var DWELL = 500;       // ms: gaano katagal dapat naka-hover sa ibang pangalan bago lumipat ang card
       var FADE_TIME = 450;   // ms: tagal ng smooth na pagkawala
       var MOVE_MIN = 4;      // px: gaano kalayo ang galaw para ituring na "ginalaw ng user" ang mouse
 
       /* ======================= RULES =======================
          Pagkatapos mag-click sa photo, naka-LOCK ang hover sa mga pangalan (#members.locked).
          - Habang nag-i-scroll pababa: walang lalabas na card sa ibang pangalan.
-         - Naka-pin ang card ng na-click. Lilipat lang ito kapag ginalaw talaga ng user ang mouse
-           at nag-hover ng DWELL ms sa ibang pangalan. Kapag nadaanan lang / dumapo lang dahil sa scroll: walang mangyayari.
+         - Naka-pin ang card ng na-click. Lilipat ito AGAD (walang delay) kapag ginalaw talaga ng user ang mouse
+           papunta sa ibang pangalan. Kapag dumapo lang ang cursor dahil sa scroll (walang galaw): walang mangyayari.
          - Kapag nag-scroll ang user: mawawala agad ang card (smooth fade).
          - Pagkatapos nito, naka-lock pa rin hanggang gumalaw ulit ang mouse.
          ====================================================== */
       var phase = 'idle';          // 'scrolling' (papunta pa sa baba) | 'pinned' | 'idle'
       var pinned = null;           // member na naka-pin
-      var fadeTimer = null, dwellTimer = null, dwellTarget = null, goToken = 0;
+      var fadeTimer = null, goToken = 0;
       var lastX = 0, lastY = 0, anchorX = -999, anchorY = -999, realMove = false;
 
       function setLocked(v) { section.classList.toggle('locked', v); }
@@ -237,18 +236,11 @@
         place(card, member, x, r.top + r.height / 2, flip);
       }
 
-      /* ---------- dwell: hover ng ~1 segundo sa ibang pangalan ---------- */
-      function cancelDwell() { clearTimeout(dwellTimer); dwellTimer = null; dwellTarget = null; }
-
-      function startDwell(member) {
-        cancelDwell();
-        dwellTarget = member;
-        dwellTimer = setTimeout(function () {
-          dwellTarget = null;
-          unpin(true);
-          setLocked(false);
-          place(member.querySelector('.member-card'), member, lastX, lastY);   // ang hover na ang bahala sa pagpapakita
-        }, DWELL);
+      /* ---------- lipat agad sa ibang pangalan (kapag ginalaw ng user ang mouse) ---------- */
+      function switchTo(member) {
+        unpin(true);
+        setLocked(false);
+        place(member.querySelector('.member-card'), member, lastX, lastY);   // ang hover na ang bahala sa pagpapakita
       }
 
       /* ---------- hover sa pangalan ---------- */
@@ -258,9 +250,8 @@
         member.addEventListener('mouseenter', function (e) { place(card, member, e.clientX, e.clientY); });
         member.addEventListener('mousemove', function (e) {
           place(card, member, e.clientX, e.clientY);
-          if (phase === 'pinned' && member !== pinned && realMove && dwellTarget !== member) startDwell(member);
+          if (phase === 'pinned' && member !== pinned && realMove) switchTo(member);
         });
-        member.addEventListener('mouseleave', function () { if (dwellTarget === member) cancelDwell(); });
         // Kapag na-click ng mouse, huwag mag-focus (kung hindi, mananatiling nakalutang ang card).
         member.addEventListener('mousedown', function (e) { e.preventDefault(); });
         // keyboard focus (walang cursor)
@@ -270,7 +261,6 @@
       /* ---------- naka-pin na card (galing sa click sa photo) ---------- */
       function unpin(immediate) {
         clearTimeout(fadeTimer);
-        cancelDwell();
         phase = 'idle';
         if (!pinned) return;
         var m = pinned, card = m.querySelector('.member-card');
